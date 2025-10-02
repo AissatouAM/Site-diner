@@ -8,7 +8,7 @@
 <body>
     <div class="stars"></div>
     <header>
-        <h1 class="gold-glow">✨ Dîner du Département Génie Informatique ✨</h1>
+        <h1 class="gold-glow">✨ Dîner du Département Génie Informatiqueee ✨</h1>
         <p class="slogan">Un événement d’exception, une nuit inoubliable !</p>
         <p class="intro">
             Bienvenue sur <b>LA</b> plateforme du dîner où l’élégance rencontre l’innovation. Prépare-toi à vivre une soirée festive, pleine de surprises, de rires et de rencontres !
