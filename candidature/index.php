@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dancing+Script:wght@400..700&family=Playwrite+CA:wght@100..400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="candidature.css">
+  <link rel="stylesheet" href="../assets/css/candidature.css">
   <title>Essaie Page Candidature</title>
 </head>
 <body>
@@ -90,6 +90,6 @@
 
 <?php
 
-include("db");
+include("db"); 
 
 ?>
