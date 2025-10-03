@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Inscription – Dîner Informatique</title>
-    <link rel="stylesheet" href="../assets/css/auth.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/inscription.css">
+    <title>inscription</title>
 </head>
+
 <body>
-    <div class="stars"></div>
-    <div class="auth-card">
-        <a href="../accueil/" class="icon-home" title="Retour à l’accueil">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                <path d="M3 10.5L12 4L21 10.5V18a2 2 0 0 1-2 2h-4v-5h-6v5H5a2 2 0 0 1-2-2v-7.5Z" stroke="#ffd700" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <h2 class="gold-glow">Inscription</h2>
-        <form action="process.php" method="post">
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" required>
-            <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" required>
-            <label for="numero">Numéro de téléphone</label>
-            <input type="text" name="numero" id="numero" required>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" required>
-            <button type="submit" class="btn">S’inscrire</button>
+    <div class="fond"></div>
+    <div class="centre"></div>
+    <div class="container">
+        <h2>Inscription</h2>
+        <form class="register-form">
+            <input type="tel" pattern="[0-9]{9}" title="Veuillez entrer un numéro de téléphone valide (ex: 777777777)" placeholder="Numéro de téléphone" required/>
+            <input type="password" placeholder="Mot de passe" required/>
+            <input type="password" placeholder="Confirmer le mot de passe" required />
+            <button type="submit" class="bouton" onclick="window.location.href='../accueil2/index.php'">S'inscrire</button>
+
+            <p class="message">Déjà inscrit? <a href="../connexion/index.php">Se connecter</a></p>
         </form>
-        <p class="message">Déjà inscrit ? <a href="../connexion/">Connecte-toi ici</a></p>
     </div>
-    <script src="../assets/js/stars.js"></script>
 </body>
+
 </html>

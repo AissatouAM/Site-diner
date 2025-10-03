@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Connexion – Dîner Informatique</title>
-    <link rel="stylesheet" href="../assets/css/auth.css">
+    <title>connexion</title>
+    <link rel="stylesheet" href="../assets/css/connexion.css">
 </head>
+
 <body>
-    <div class="stars"></div>
-    <div class="auth-card">
-        <a href="../accueil/" class="icon-home" title="Retour à l’accueil">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                <path d="M3 10.5L12 4L21 10.5V18a2 2 0 0 1-2 2h-4v-5h-6v5H5a2 2 0 0 1-2-2v-7.5Z" stroke="#ffd700" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <h2 class="gold-glow">Connexion</h2>
-        <form action="login.php" method="post">
-            <label for="numero">Numéro de téléphone</label>
-            <input type="text" name="numero" id="numero" required>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" required>
-            <button type="submit" class="btn">Se connecter</button>
+    <div class="container">
+        <h2>Connexion</h2>
+        <form class="register-form">
+            <input type="tel" placeholder="Numéro de téléphone" pattern="[0-9]{9}" title="Veuillez entrer un numéro de téléphone valide (ex: 777777777)" required>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required><br><br>
+            <button type="submit" class="bouton" onclick="window.location.href='../accueil2/index.php'">Se connecter</button><br><br>
+            <a>Mot de passe oublié ?</a>
         </form>
-        <p class="message">Pas encore de compte ? <a href="../inscription/">Inscris-toi ici</a></p>
     </div>
-    <script src="../assets/js/stars.js"></script>
 </body>
+
 </html>
