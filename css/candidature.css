@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+.navbar{
+  background:url("file:///C:/Users/HP%20840/Desktop/page.jpg");
+  background-size: cover;
+    position: absolute;
+    width:100%;
+    left: 0px;
+    right: 0px;
+    height: 70px;
+    box-shadow: 0px 5px 10px goldenrod;
+    top:0px;
+}
+.cd{
+    font-family:'Dancing script',sans-serif;
+    color: #ECBE10;
+    position:absolute;
+    font-size:17px;
+    top:-6px;
+     text-shadow: 
+       0 1px 0 rgba(255,255,255,0.05),   
+  0 4px 8px rgba(0,0,0,0.6),        
+  0 8px 20px rgba(0,0,0,0.65); 
+       left: 7px;
+}
+
+#lien{
+    height:50px;
+    font-family:'Dancing script',sans-serif;
+    font-size:30px;
+    color: #ECBE10;
+    position:absolute;
+    top:12px;
+      text-shadow:
+  0 1px 0 rgba(255,255,255,0.05),   
+  0 4px 8px rgba(0,0,0,0.6),        
+  0 8px 20px rgba(0,0,0,0.65);  
+    right: 35%;
+    width:140px;
+    border-radius:20px;
+    background:transparent;
+    text-align: center;
+    border: none;
+    
+}
+ #lien:hover{
+    background-color: white;
+    transition:0.3s;
+    color: black;
+    text-shadow:
+    2px 2px 3px rgba(218, 165, 32, 0.9),   
+    4px 4px 6px rgba(255, 215, 0, 0.9),    
+    6px 6px 12px rgba(255, 224, 120, 0.783); 
+ }
+ #vote{
+  height:50px;
+    font-family:'Dancing script',sans-serif;
+    font-size:30px;
+    color: #ECBE10;
+    position:absolute;
+    top:12px;
+     text-shadow: 
+      0 1px 0 rgba(255,255,255,0.05),   
+  0 4px 8px rgba(0,0,0,0.6),        
+  0 8px 20px rgba(0,0,0,0.65); 
+    right: 25%;
+    width:130px;
+    border-radius:20px;
+    background:transparent;
+    text-align: center;
+    border: none;
+ }
+#vote:hover{
+ background-color: white;
+    transition:0.3s;
+    color: black;
+    text-shadow:
+    2px 2px 3px rgba(218, 165, 32, 0.9),   
+    4px 4px 6px rgba(255, 215, 0, 0.9),    
+    6px 6px 12px rgba(255, 224, 120, 0.783); 
+}
+ #cand{
+    height:50px;
+    font-family:'Dancing script',sans-serif;
+    font-size:30px;
+    color: #ECBE10;
+    position:absolute;
+    top:12px;
+     text-shadow: 
+     -2px -2px 2px rgba(0,0,0,0.8),  
+  2px 2px 4px rgba(0,0,0,0.6);
+    right: 13%;
+    width:150px;
+    border-radius:20px;
+    background:transparent;
+    text-align: center;
+    border: none;
+ }
+#cand:hover{
+    background-color: white;
+    transition:0.3s;
+    color: black;
+    text-shadow:
+    2px 2px 3px rgba(218, 165, 32, 0.9),   
+    4px 4px 6px rgba(255, 215, 0, 0.9),    
+    6px 6px 12px rgba(255, 224, 120, 0.783); 
+}
+#rest{
+ height:50px;
+    font-family:'Dancing script',sans-serif;
+    font-size:30px;
+    color: #ECBE10;
+    position:absolute;
+    top:12px;
+     text-shadow: 
+     -2px -2px 2px rgba(0,0,0,0.8),  
+  2px 2px 4px rgba(0,0,0,0.6);
+    right: 1%;
+    width:150px;
+    border-radius:20px;
+    background:transparent;
+    text-align: center;
+    border: none;
+}
+#rest:hover{
+  background-color: white;
+    transition:0.3s;
+    color: black;
+    text-shadow:
+    2px 2px 3px rgba(218, 165, 32, 0.9),   
+    4px 4px 6px rgba(255, 215, 0, 0.9),    
+    6px 6px 12px rgba(255, 224, 120, 0.783); 
+}
+body {
+  font-family: Dancing Script;
+  font-weight: bold;
+  font-size: 15px;
+  background-image: url("img-fond4.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+
+#haut{
+  width: 250px;
+  height: 120px;
+  margin-bottom: 10px;
+  margin-left: auto ;
+  margin-right: auto  ; 
+  transition: all 0.3s ease;  
+}
+
+
+/*#messageerreur {
+ position: fixed;
+ z-index: 1;
+ top: 367px;
+ font-size: 20px;
+ width: 240px;
+ color: lab(53.23% 80.11 67.22);
+ min-height: 0;
+}
+
+#haut #error {
+  height: 80px;
+}
+*/
+
+#middle{
+    width: 275px;
+    margin: auto ;
+    margin-bottom: 10px;
+}
+
+#last{
+    width: 275px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+button {
+    display:block;
+    margin: auto;
+    width: 250px;
+    height: 50px;
+    font-size: 27px;
+    font-weight: bold;
+    font-weight: bold;
+    font-family: Dancing Script;
+    border-radius: 15px;
+}
+
+#h1 { 
+    text-align: center;
+    color: silver;
+    margin-top: 110px;
+    margin-left: -18px;
+    width: 400px ;
+    font-size: 28px;
+    text-shadow:
+  0 1px 0 rgba(255,255,255,0.05),   /* léger highlight */
+  0 4px 8px rgba(0,0,0,0.6),        /* ombre portée profonde */
+  0 8px 20px rgba(0,0,0,0.65);      /* dégradé d'ombre */
+}
+
+#h2 { 
+    text-align: center;
+    color: silver;
+    width: 400px ;
+    margin-left: -20px;
+    font-size: 28px;
+    text-shadow:
+  0 1px 0 rgba(255,255,255,0.05),   
+  0 4px 8px rgba(0,0,0,0.6),        
+  0 8px 20px rgba(0,0,0,0.65);       
+}
+
+#h1, #h2 {
+    font-weight: bold;
+    background: linear-gradient(45deg, #ffd903, #e5af4c, #7e741b, #aea33e);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+
+  @keyframes shine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+fieldset{
+    border-radius: 25px;
+    padding:15px;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 200px;
+  justify-content: center;
+  align-items: center;
+  width: 340px;
+  height:520px;
+  padding: 15px;
+  border:2px solid rgb(142, 130, 100);
+  border-radius: 50px;
+  background-image: url(img-fond4.jpg);
+  background-position: center;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px 2px rgba(218, 165, 32, 0.9);
+}
+
+.infos-input {
+  position: relative;
+  line-height: 50px;
+  color: rgb(83, 58, 3);
+  font-size: 19px;
+}
+
+#prenom, #nom {
+  outline: none;
+  background-color: #e3dfd6;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.lab-prenom, .lab-nom {
+  position: absolute;
+  left: 5px;
+  top: 0px;
+  transition: 290ms ease;
+}
+
+#prenom:focus~.lab-prenom,
+#prenom:not(:placeholder-shown)~.lab-prenom,
+#nom:focus~.lab-nom,
+#nom:not(:placeholder-shown)~.lab-nom {
+  top: -25px;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 12px;
+  margin-right: 25px;
+  background-color: rgb(241, 240, 240);
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+  color: rgb(241, 240, 240);
+  background-color: black;
+}
+
+input[type="file"]::-webkit-file-upload-button:active {
+  color: black;
+  background-color: rgb(241, 240, 240);
+}
+
+#titre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 275px;
+}
+
+#roi {
+  margin-right: 20px;
+}
+
+#reine {
+ margin-left: 50px; 
+ margin-right: 20px;
+}
+
+button{
+    background-color: silver;
+    font-style: italic;
+    color: black;
+    font-weight: 300;
+    text-shadow:
+  0 1px 0 rgba(255,255,255,0.05),   
+  0 4px 8px rgba(0,0,0,0.6),        
+  0 8px 20px rgba(0,0,0,0.65);      
+}
+
+button:hover {
+  color: whitesmoke;
+  background-color: rgba(102, 66, 66, 0.228);
+}
+
+button:active {
+  background-color: silver;
+  color: black;
+}
