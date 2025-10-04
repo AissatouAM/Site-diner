@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "passer"; // Mets ton mot de passe MySQL ici
+$password = ""; // Mets ton mot de passe MySQL ici
 $database = "site_diner";
 
 try {
