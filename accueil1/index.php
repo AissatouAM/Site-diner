@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/accueil1.css">
-    <title>acceuil</title>
+    <title>accueil</title>
 </head>
 
 <body>
@@ -35,7 +35,8 @@
                 </div>
             </div>
             <div class="message" id="message" role="status" style="display: none;">
-                l'heure est arrivee sortez vos sangse !
+    <title>acceuil</title>
+                l'heure est arrivee sortez vos plus beaux sangse !
             </div>
 
         </div>
