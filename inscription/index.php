@@ -13,17 +13,16 @@
     <div class="centre"></div>
     <div class="container">
         <h2>Inscription</h2>
-        <form class="register-form">
-            <input type="text" placeholder="Prénom" required />
-            <input type="text" placeholder="Nom" required />
-            <input type="tel" pattern="[0-9]{9}" title="Veuillez entrer un numéro de téléphone valide (ex: 777777777)" placeholder="Numéro de téléphone" required/>
-            <input type="password" placeholder="Mot de passe" required/>
-            <input type="password" placeholder="Confirmer le mot de passe" required />
-            <button type="submit" class="bouton" onclick="window.location.href='../accueil2/index.php'">S'inscrire</button>
-            
-            
+        <form class="register-form" method="POST" action="traitement_inscription.php">
+            <input type="text" name="prenom" placeholder="Prénom" required />
+            <input type="text" name="nom" placeholder="Nom" required />
+            <input type="tel" name="telephone" pattern="[0-9]{9}" title="Veuillez entrer un numéro de téléphone valide (ex: 777777777)" placeholder="Numéro de téléphone" required />
+            <input type="password" name="password" placeholder="Mot de passe" required />
+            <input type="password" name="confirm_password" placeholder="Confirmer le mot de passe" required />
+            <button type="submit" class="bouton">S'inscrire</button>
             <p class="message">Déjà inscrit? <a href="../connexion/index.php">Se connecter</a></p>
         </form>
+ 
     </div>
 </body>
 
