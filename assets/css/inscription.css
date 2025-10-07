@@ -33,13 +33,17 @@ body {
     margin-bottom: 20px;
 }
 
-.register-form input {
+.register-form input[type="text"],
+.register-form input[type="tel"],
+.register-form input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: none;
     border-radius: 6px;
     outline: none;
+    display: block;
+    box-sizing: border-box;
 }
 
 * {
@@ -73,11 +77,16 @@ a:hover {
     color: white;
 }
 
-input {
-    background-color: rgb(255, 255, 255, 0.2);
-    font-size: 14px;
-}
 
-input::-webkit-input-placeholder {
+input {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 14px;
     color: white;
 }
+
+
+input::placeholder { color: white; opacity: 0.9; }
+input::-webkit-input-placeholder { color: white; }
+input::-moz-placeholder { color: white; }
+input:-ms-input-placeholder { color: white; }
+input:-moz-placeholder { color: white; }
