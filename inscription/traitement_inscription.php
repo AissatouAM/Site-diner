@@ -46,9 +46,47 @@ $stmt->execute([$prenom, $nom, $telephone, $hashedPassword]);
 $_SESSION['utilisateur_id'] = $pdo->lastInsertId();
 $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
-
-// 8. Rediriger vers la page d'accueil
 $_SESSION['inscription_reussie'] = true;
-header("Location: ../accueil2/index.php");
+
+echo "
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='refresh' content='3;url=../connexion/html/index.php'>
+    <title>Inscription réussie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .message-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #28a745;
+        }
+        p {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class='message-box'>
+        <h2>✅ Inscription réussie !</h2>
+        <p>Vous allez être redirigé vers la page de connexion dans quelques secondes...</p>
+        <p><a href='../connexion/html/index.php'>Cliquez ici si la redirection ne se fait pas.</a></p>
+    </div>
+</body>
+</html>
+";
 exit();
 ?>
