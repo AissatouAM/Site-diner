@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../config/db_connect.php");
+require_once("../../config/db_connect.php");
 
 // Récupération des données du formulaire
 $prenom = trim($_POST['prenom']);
@@ -53,7 +53,7 @@ echo "
 <html lang='fr'>
 <head>
     <meta charset='UTF-8'>
-    <meta http-equiv='refresh' content='3;url=../connexion/html/index.php'>
+    <meta http-equiv='refresh' content='3;url=../../connexion/html/index.php'>
     <title>Inscription réussie</title>
     <style>
         body {
@@ -83,7 +83,7 @@ echo "
     <div class='message-box'>
         <h2>✅ Inscription réussie !</h2>
         <p>Vous allez être redirigé vers la page de connexion dans quelques secondes...</p>
-        <p><a href='../connexion/html/index.php'>Cliquez ici si la redirection ne se fait pas.</a></p>
+        <p><a href='../../connexion/html/index.php'>Cliquez ici si la redirection ne se fait pas.</a></p>
     </div>
 </body>
 </html>

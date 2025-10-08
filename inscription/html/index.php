@@ -23,7 +23,7 @@
             <button type="submit" class="bouton">S'inscrire</button>
             
             
-            <p class="message">Déjà inscrit? <a href="../connexion/html/index.php">Se connecter</a></p>
+            <p class="message">Déjà inscrit? <a href="../../connexion/html/index.php">Se connecter</a></p>
         </form>
     </div>
 </body>
