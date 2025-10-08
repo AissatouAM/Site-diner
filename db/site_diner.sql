@@ -6,10 +6,10 @@ USE site_diner;
 -- Table des utilisateurs (participants/admin)
 CREATE TABLE utilisateurs (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100),
-    prenom VARCHAR(100),
-    numero VARCHAR(30) UNIQUE,
-    mot_de_passe VARCHAR(255),
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    numero VARCHAR(30) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
     statut ENUM('participant', 'admin') DEFAULT 'participant'
 );
 
