@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/accueil1.css">
-    <script src="../assets/js/countdow.js"></script>
     <title>accueil</title>
 </head>
-
 <body>
     <div class="background"></div>
     <main>
@@ -43,6 +41,7 @@
         <button class="buttonup" onclick="window.location.href='../inscription/html/index.php'">S'inscrire</button>
         <button class="buttonin" onclick="window.location.href='../connexion/html/index.php'">Se connecter </button>
     </main>
+    <script src="../assets/js/countdown.js"></script>
 </body>
 
 </html>
