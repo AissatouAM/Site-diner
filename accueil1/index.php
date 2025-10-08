@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/accueil1.css">
-    <script src="../assets/js/countdow.js"></script>
+    <script src="../assets/js/countdown.js"></script>
     <title>accueil</title>
 </head>
 

@@ -13,23 +13,22 @@ if ($password !== $confirm) {
     exit();
 }
 
-$conn = new PDO("mysql:host=localhost;dbname=site_diner", "root", "");
-
-
-$stmt = $conn->prepare("SELECT * FROM utilisateurs WHERE telephone = ?");
+$stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE telephone = ?");
 $stmt->execute([$telephone]);
 if ($stmt->fetch()) {
     echo "Ce numéro est déjà utilisé.";
     exit();
 }
 
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$stmt = $conn->prepare("INSERT INTO utilisateurs (prenom, nom, telephone, mot_de_passe) VALUES (?, ?, ?, ?)");
+$stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, telephone, mot_de_passe) VALUES (?, ?, ?, ?)");
 $stmt->execute([$prenom, $nom, $telephone, $password]);
 
 
 $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
+
 header("Location: ../accueil2/index.php");
 exit();
 ?>
