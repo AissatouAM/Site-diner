@@ -40,8 +40,8 @@
             </div>
 
         </div>
-        <button class="buttonup" onclick="window.location.href='../inscription/index.php'">S'inscrire</button>
-        <button class="buttonin" onclick="window.location.href='../connexion/index.php'">Se connecter </button>
+        <button class="buttonup" onclick="window.location.href='../inscription/html/index.php'">S'inscrire</button>
+        <button class="buttonin" onclick="window.location.href='../connexion/html/index.php'">Se connecter </button>
     </main>
 </body>
 
