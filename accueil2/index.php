@@ -5,10 +5,6 @@ if (!isset($_SESSION['prenom']) || !isset($_SESSION['nom'])) {
     header("Location: ../connexion/index.php");
     exit();
 }
-if (isset($_SESSION['inscription_reussie'])) {
-    echo "<div class='success-message'>🎉 Inscription réussie ! Bienvenue, " . htmlspecialchars($_SESSION['prenom']) . ".</div>";
-    unset($_SESSION['inscription_reussie']); // On l'affiche une seule fois
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
