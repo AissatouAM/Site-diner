@@ -10,7 +10,7 @@ $password = $_POST['password'];
 $confirm = $_POST['confirm_password'];
 
 // 1. Vérifier que tous les champs sont remplis
-if (empty($prenom) || empty($nom) || empty($telephone) || empty($password) || empty($confirm)) {
+if (empty($prenom) || empty($nom) || empty($telephone) || empty($password) || empty($confirm_password)) {
     echo "Tous les champs sont obligatoires.";
     exit();
 }
