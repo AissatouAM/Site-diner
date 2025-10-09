@@ -33,18 +33,19 @@ if (!$user) {
     exit();
 }
 
-// Vérification du mot de passe
-if ($user['mot_de_passe'] !== $mot_de_passe) {
+$motDePasseBD = $user['mot_de_passe'];
+
+// Si le mot de passe est en clair ou haché
+if ($motDePasseBD === $mot_de_passe || password_verify($mot_de_passe, $motDePasseBD)) {
+    // ✅ Connexion réussie
+    $_SESSION['utilisateur_id'] = $user['id'];
+    $_SESSION['prenom'] = $user['prenom'];
+    $_SESSION['nom'] = $user['nom'];
+    header("Location: ../accueil2/index.php");
+    exit();
+} else {
     echo "Mot de passe incorrect.";
     exit();
 }
 
-// Si tout est bon : création de la session
-$_SESSION['user_id'] = $user['id'];
-$_SESSION['prenom'] = $user['prenom'];
-$_SESSION['nom'] = $user['nom'];
-
-// 🔟 Redirection vers la page d’accueil
-header("Location: ../../accueil2/index.php");
-exit();
 ?>
