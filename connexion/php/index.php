@@ -41,7 +41,7 @@ if ($motDePasseBD === $mot_de_passe || password_verify($mot_de_passe, $motDePass
     $_SESSION['utilisateur_id'] = $user['id'];
     $_SESSION['prenom'] = $user['prenom'];
     $_SESSION['nom'] = $user['nom'];
-    header("Location: ../accueil2/index.php");
+    header("Location: ../../accueil2/index.php");
     exit();
 } else {
     echo "Mot de passe incorrect.";
