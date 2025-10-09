@@ -22,7 +22,7 @@ if ($password !== $confirm) {
 }
 
 // 3. Vérifier le format du numéro (9 chiffres)
-if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $numero)) {
+if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
     echo "Numéro invalide.";
     exit();
 }
