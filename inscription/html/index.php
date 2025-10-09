@@ -19,7 +19,7 @@
             <input type="tel" name="telephone" pattern="[0-9]{9}" title="Veuillez entrer un numéro de téléphone valide (ex: 777777777)" 
              placeholder="Numéro de téléphone" pattern="^(77|76|75|78|71|70)[0-9]{7}$" maxlength="9" required/>
             <input type="password" name="password" placeholder="Mot de passe" required/>
-            <input type="password" name="confirm_passwoed" placeholder="Confirmer le mot de passe" required />
+            <input type="password" name="confirm_password" placeholder="Confirmer le mot de passe" required />
             <button type="submit" class="bouton">S'inscrire</button>
             
             
