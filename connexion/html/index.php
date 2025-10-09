@@ -16,6 +16,7 @@
             <button type="submit" class="bouton">Se connecter</button><br><br>
             <a href="#" onclick="afficherMessage(); return false;">Mot de passe oublié ?</a>
         </form>
+        <p class="message"></p>
     </div>
     <script>
         function afficherMessage() {
