@@ -20,12 +20,39 @@
              placeholder="Numéro de téléphone" pattern="^(77|76|75|78|71|70)[0-9]{7}$" maxlength="9" required/>
             <input type="password" name="password" placeholder="Mot de passe" required/>
             <input type="password" name="confirm_password" placeholder="Confirmer le mot de passe" required />
-            <button type="submit" class="bouton">S'inscrire</button>
-            
-            
+            <button type="submit" class="bouton">S'inscrire</button> 
             <p class="message">Déjà inscrit? <a href="../../connexion/html/index.php">Se connecter</a></p>
         </form>
+        <p id="message" style="margin-top:10px; color:red;"></p>
     </div>
+    <script>
+  document.querySelector("#formInscription").addEventListener("submit", async (e) => {
+      e.preventDefault(); // empêche le rechargement de la page
+      const form = e.target;
+      const formData = new FormData(form);
+      const messageZone = document.getElementById("message");
+
+      try {
+          const response = await fetch("../php/index.php", {
+              method: "POST",
+              body: formData
+          });
+          const data = await response.text();
+
+          if (data.trim() === "success") {
+              // ✅ redirige si inscription réussie
+              window.location.href = "../../connexion/html/index.php";
+          } else {
+              // ⚠️ affiche le message d’erreur
+              messageZone.textContent = data;
+              messageZone.style.color = "red";
+          }
+      } catch (error) {
+          messageZone.textContent = "Erreur de connexion au serveur.";
+          messageZone.style.color = "red";
+      }
+  });
+  </script>
 </body>
 
 </html>
