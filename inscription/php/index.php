@@ -31,7 +31,8 @@ if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
 $stmt = $pdo->prepare("SELECT id FROM utilisateurs WHERE numero = ?");
 $stmt->execute([$telephone]);
 if ($stmt->fetch()) {
-    echo "Ce numéro est déjà utilisé.";
+    $_SESSION['erreur_numero'] = "Ce numéro est déjà utilisé.";
+    header("Location: ../html/index.php");
     exit();
 }
 
