@@ -43,4 +43,3 @@ CREATE TABLE votes (
     INDEX idx_vote_votant (votant_id),
     INDEX idx_vote_candidature (candidature_id)
 );
-
