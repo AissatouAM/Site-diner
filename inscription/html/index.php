@@ -24,10 +24,6 @@
         $pref_prenom = isset($_GET['prenom']) ? htmlspecialchars($_GET['prenom']) : '';
         $pref_nom = isset($_GET['nom']) ? htmlspecialchars($_GET['nom']) : '';
         $pref_telephone = isset($_GET['telephone']) ? htmlspecialchars($_GET['telephone']) : '';
-        ?>
-
-        <?php
-        session_start();
 
         // Message si le numéro existe déjà
         if (isset($_SESSION['erreur_numero'])) {
@@ -41,7 +37,6 @@
             unset($_SESSION['erreur_numero_invalide']);
         }
         ?>
-
 
         <form class="register-form" method="POST" action="../php/index.php">
             <input type="text" name="prenom" placeholder="Prénom" value="<?= $pref_prenom ?>" required />
