@@ -17,12 +17,18 @@ if (empty($prenom) || empty($nom) || empty($telephone) || empty($password) || em
 
 // 2. Vérifier que les mots de passe correspondent
 if ($password !== $confirm) {
-    echo "Les mots de passe ne correspondent pas.";
+    $qs = http_build_query([
+        'confirm_error' => 1,
+        'prenom' => $prenom,
+        'nom' => $nom,
+        'telephone' => $telephone
+    ]);
+    header('Location: ../html/index.php?' . $qs);
     exit();
 }
 
 // 3. Vérifier le format du numéro (9 chiffres)
-if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $numero)) {
+if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
     echo "Numéro invalide.";
     exit();
 }
