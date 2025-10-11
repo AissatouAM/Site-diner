@@ -17,7 +17,13 @@ if (empty($prenom) || empty($nom) || empty($telephone) || empty($password) || em
 
 // 2. Vérifier que les mots de passe correspondent
 if ($password !== $confirm) {
-    echo "Les mots de passe ne correspondent pas.";
+    $qs = http_build_query([
+        'confirm_error' => 1,
+        'prenom' => $prenom,
+        'nom' => $nom,
+        'telephone' => $telephone
+    ]);
+    header('Location: ../html/index.php?' . $qs);
     exit();
 }
 

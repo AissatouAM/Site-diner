@@ -3,43 +3,53 @@
 CREATE DATABASE IF NOT EXISTS site_diner CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE site_diner;
 
--- Table des utilisateurs (participants/admin)
-CREATE TABLE utilisateurs (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100) NOT NULL,
-    prenom VARCHAR(100) NOT NULL,
-    numero VARCHAR(30) UNIQUE NOT NULL,
-    mot_de_passe VARCHAR(255) NOT NULL,
-    statut ENUM('participant', 'admin') DEFAULT 'participant'
-);
+-- Drop tables si elles existent (pratique pour réimport)
+DROP TABLE IF EXISTS `vote`;
+DROP TABLE IF EXISTS `candidat`;
+DROP TABLE IF EXISTS `utilisateur`;
 
--- Table des candidatures (pour Roi/Reine)
-CREATE TABLE candidatures (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id INT,
-    niveau_etude VARCHAR(50),
-    photo VARCHAR(255),
-    type ENUM('roi', 'reine'),
-    date_candidature DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id),
-    -- Empêcher qu'un même utilisateur ne se porte candidat plusieurs fois pour le même type
-    UNIQUE KEY unique_candidate_per_type (utilisateur_id, type),
-    INDEX idx_candidature_type (type),
-    INDEX idx_candidature_utilisateur (utilisateur_id)
-);
+-- Table utilisateur
+CREATE TABLE `utilisateur` (
+    `id_utilisateur` INT AUTO_INCREMENT PRIMARY KEY,
+    `telephone` VARCHAR(30) NOT NULL UNIQUE,
+    `mot_de_passe` VARCHAR(255) NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Table des votes
-CREATE TABLE votes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    votant_id INT,
-    candidature_id INT,
-    -- Stocker le type du vote (roi/reine) pour pouvoir appliquer une contrainte d'unicité
-    type ENUM('roi','reine') NOT NULL,
-    date_vote DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (votant_id) REFERENCES utilisateurs(id),
-    FOREIGN KEY (candidature_id) REFERENCES candidatures(id),
-    -- Empêcher le même votant de voter plusieurs fois pour le même type (ex : 2 votes pour 'roi')
-    UNIQUE KEY unique_vote_per_type (votant_id, type),
-    INDEX idx_vote_votant (votant_id),
-    INDEX idx_vote_candidature (candidature_id)
-);
+-- Table candidat
+CREATE TABLE `candidat` (
+    `id_candidat` INT AUTO_INCREMENT PRIMARY KEY,
+    `nom` VARCHAR(100) NOT NULL,
+    `prenom` VARCHAR(100) NOT NULL,
+    -- téléphonne du candidat (référence optionnelle vers table utilisateur)
+    `telephone` VARCHAR(30) DEFAULT NULL,
+    `photo` VARCHAR(255) DEFAULT NULL,
+    `niveau` VARCHAR(100) DEFAULT NULL,
+    `genre_candidat` ENUM('masculin','feminin') NOT NULL,
+    -- champ de comptage (facultatif, peut être maintenu via trigger ou requête d'agrégation)
+    `vote` INT DEFAULT 0,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    INDEX (`genre_candidat`),
+    INDEX (`telephone`),
+    CONSTRAINT `fk_candidat_telephone` FOREIGN KEY (`telephone`) REFERENCES `utilisateur`(`telephone`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Table vote
+CREATE TABLE `vote` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `id_utilisateur` INT NOT NULL,
+    `id_candidat` INT NOT NULL,
+    `genre_candidat` ENUM('masculin','feminin') NOT NULL,
+    `date_vote` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT `fk_vote_utilisateur` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur`(`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `fk_vote_candidat` FOREIGN KEY (`id_candidat`) REFERENCES `candidat`(`id_candidat`) ON DELETE CASCADE ON UPDATE CASCADE,
+    -- Contrainte: un utilisateur ne peut voter qu'une fois par genre
+    UNIQUE KEY `unique_vote_per_genre` (`id_utilisateur`, `genre_candidat`),
+    INDEX (`id_utilisateur`),
+    INDEX (`id_candidat`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Note: la colonne `vote` dans `candidat` est un champ de cache; il peut être mis à jour
+-- via trigger ou recalculé par une requête d'agrégation :
+-- SELECT id_candidat, COUNT(*) FROM vote GROUP BY id_candidat;
+
