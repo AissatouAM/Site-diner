@@ -13,15 +13,18 @@
     <div class="centre"></div>
     <div class="container">
         <h2>Inscription</h2>
-
-
-    <!-- Aficher un message simple si la confirmation du mot de passe a échoué -->
-    <?php
-    $confirm_error = isset($_GET['confirm_error']) && $_GET['confirm_error'] == 1;
-    $pref_prenom = isset($_GET['prenom']) ? htmlspecialchars($_GET['prenom']) : '';
-    $pref_nom = isset($_GET['nom']) ? htmlspecialchars($_GET['nom']) : '';
-    $pref_telephone = isset($_GET['telephone']) ? htmlspecialchars($_GET['telephone']) : '';
-    ?>
+        <?php
+        // Affiche un message simple si la confirmation du mot de passe a échoué
+        session_start();
+        if (isset($_SESSION['erreur_numero'])) {
+            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_numero'] . "</p>";
+            unset($_SESSION['erreur_numero']);
+        }
+        $confirm_error = isset($_GET['confirm_error']) && $_GET['confirm_error'] == 1;
+        $pref_prenom = isset($_GET['prenom']) ? htmlspecialchars($_GET['prenom']) : '';
+        $pref_nom = isset($_GET['nom']) ? htmlspecialchars($_GET['nom']) : '';
+        $pref_telephone = isset($_GET['telephone']) ? htmlspecialchars($_GET['telephone']) : '';
+        ?>
 
         <form class="register-form" method="POST" action="../php/index.php">
             <input type="text" name="prenom" placeholder="Prénom" value="<?= $pref_prenom ?>" required />
@@ -31,7 +34,7 @@
             <input type="password" name="password" placeholder="Mot de passe" required/>
             <input type="password" name="confirm_password" placeholder="Confirmer le mot de passe" required />
             
-            
+
             <!--Affichage du message-->
             <?php if ($confirm_error): ?>
                 <div style="color:red;margin-top:6px;">Les mot de passe ne correspondent pas</div>
