@@ -26,6 +26,23 @@
         $pref_telephone = isset($_GET['telephone']) ? htmlspecialchars($_GET['telephone']) : '';
         ?>
 
+        <?php
+        session_start();
+
+        // Message si le numéro existe déjà
+        if (isset($_SESSION['erreur_numero'])) {
+            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_numero'] . "</p>";
+            unset($_SESSION['erreur_numero']);
+        }
+
+        // ✅ Message si le format du numéro est invalide
+        if (isset($_SESSION['erreur_numero_invalide'])) {
+            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_numero_invalide'] . "</p>";
+            unset($_SESSION['erreur_numero_invalide']);
+        }
+        ?>
+
+
         <form class="register-form" method="POST" action="../php/index.php">
             <input type="text" name="prenom" placeholder="Prénom" value="<?= $pref_prenom ?>" required />
             <input type="text" name="nom" placeholder="Nom" value="<?= $pref_nom ?>" required />
