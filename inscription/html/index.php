@@ -16,9 +16,9 @@
         <?php
         // Affiche un message simple si la confirmation du mot de passe a échoué
         session_start();
-        if (isset($_SESSION['erreur_numero'])) {
-            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_numero'] . "</p>";
-            unset($_SESSION['erreur_numero']);
+        if (isset($_SESSION['erreur_mdp'])) {
+            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_mdp'] . "</p>";
+            unset($_SESSION['erreur_mdp']);
         }
         $confirm_error = isset($_GET['confirm_error']) && $_GET['confirm_error'] == 1;
         $pref_prenom = isset($_GET['prenom']) ? htmlspecialchars($_GET['prenom']) : '';
@@ -31,7 +31,7 @@
             unset($_SESSION['erreur_numero']);
         }
 
-        // ✅ Message si le format du numéro est invalide
+        //Message si le format du numéro est invalide
         if (isset($_SESSION['erreur_numero_invalide'])) {
             echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_numero_invalide'] . "</p>";
             unset($_SESSION['erreur_numero_invalide']);
