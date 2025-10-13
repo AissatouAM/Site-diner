@@ -18,7 +18,7 @@ if (empty($prenom) || empty($nom) || empty($telephone) || empty($password) || em
 // 2. Vérifier que les mots de passe correspondent
 if ($password !== $confirm) {
    $_SESSION['erreur_mdp'] = "Les mots de passe ne correspondent pas." ;
-   header("Location: ../html/index.php")
+   header("Location: ../html/index.php");
     exit();
 }
 
