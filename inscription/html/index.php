@@ -47,10 +47,12 @@
             <p class="message">Déjà inscrit? <a href="../../connexion/html/index.php">Se connecter</a></p>
         </form>
         <?php
-        if (isset($_SESSION['erreur_mdp'])) {
-            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_mdp'] . "</p>";
-            unset($_SESSION['erreur_mdp']);
-        }
+            if (isset($_SESSION['erreur_mdp'])) {
+                echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_mdp'] . "</p>";
+                unset($_SESSION['erreur_mdp']);
+            }
+        ?>
+
     </div>
 </body>
 
