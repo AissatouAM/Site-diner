@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coder's Diner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav>
+            <a href="votes.html" class="active">Votes</a>
+            <a href="Candidatures.html">Candidatures</a>
+            <a href="profil.html">Profil</a>
+            <a href="deconnexion.html">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Élections Roi et Reine</h1>
+        <p>Who will be on the throne this year?</p>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="Candidatures.html" class="retirer-candidature-btn">
+                <i class="fa-solid fa-user-minus"></i> Retirer ma candidature
+            </a>
+        </div>
+
+        <!-- SLIDER ROI -->
+        <section class="slider-section">
+            <h2>Rois</h2>
+            <div class="slider-container">
+                <div class="card roi-slider">
+                    <!-- 10 candidats Rois -->
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 1</h3><img src="img/roi1.jpg" alt=""><p class="nom-candidat">Jean Dupont</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 2</h3><img src="img/roi2.jpg" alt=""><p class="nom-candidat">Ali Ndiaye</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 3</h3><img src="img/roi3.jpg" alt=""><p class="nom-candidat">Marc Lemaire</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 4</h3><img src="img/roi4.jpg" alt=""><p class="nom-candidat">David Kim</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 5</h3><img src="img/roi5.jpg" alt=""><p class="nom-candidat">Lamine Cissé</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 6</h3><img src="img/roi6.jpg" alt=""><p class="nom-candidat">Thomas Leroy</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 7</h3><img src="img/roi7.jpg" alt=""><p class="nom-candidat">Mohamed Ba</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 8</h3><img src="img/roi8.jpg" alt=""><p class="nom-candidat">Pierre Martin</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 9</h3><img src="img/roi9.jpg" alt=""><p class="nom-candidat">Samuel Diouf</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="roi"><i class="fa-solid fa-crown icon-roi"></i><h3>Roi 10</h3><img src="img/roi10.jpg" alt=""><p class="nom-candidat">Jacques Dupuis</p><button class="vote-btn">Voter</button></div>
+                </div>
+                <div class="slider-controls">
+                    <button class="prev-roi"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="next-roi"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDER REINE -->
+        <section class="slider-section">
+            <h2>Reines</h2>
+            <div class="slider-container">
+                <div class="card reine-slider">
+                    <!-- 10 candidates Reines -->
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 1</h3><img src="img/reine1.jpg" alt=""><p class="nom-candidat">Marie Dubois</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 2</h3><img src="img/reine2.jpg" alt=""><p class="nom-candidat">Amina Fall</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 3</h3><img src="img/reine3.jpg" alt=""><p class="nom-candidat">Sophie Leroy</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 4</h3><img src="img/reine4.jpg" alt=""><p class="nom-candidat">Fatou Ndiaye</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 5</h3><img src="img/reine5.jpg" alt=""><p class="nom-candidat">Clara Dupont</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 6</h3><img src="img/reine6.jpg" alt=""><p class="nom-candidat">Awa Camara</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 7</h3><img src="img/reine7.jpg" alt=""><p class="nom-candidat">Julie Martin</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 8</h3><img src="img/reine8.jpg" alt=""><p class="nom-candidat">Fatim Camara</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 9</h3><img src="img/reine9.jpg" alt=""><p class="nom-candidat">Léa Diouf</p><button class="vote-btn">Voter</button></div>
+                    <div class="candidat" data-type="reine"><i class="fa-solid fa-crown icon-reine"></i><h3>Reine 10</h3><img src="img/reine10.jpg" alt=""><p class="nom-candidat">Sarah Dupuis</p><button class="vote-btn">Voter</button></div>
+                </div>
+                <div class="slider-controls">
+                    <button class="prev-reine"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="next-reine"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="index.js" defer></script>
+</body>
+
+</html>
+k
