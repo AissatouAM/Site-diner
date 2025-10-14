@@ -1,140 +1,55 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
-.navbar{
-  background:url("file:///C:/Users/HP%20840/Desktop/page.jpg");
-  background-size: cover;
-    position: absolute;
-    width:100%;
-    left: 0px;
-    right: 0px;
-    height: 70px;
-    box-shadow: 0px 5px 10px goldenrod;
-    top:0px;
-}
-.cd{
-    font-family:'Dancing script',sans-serif;
-    color: #ECBE10;
-    position:absolute;
-    font-size:17px;
-    top:-6px;
-     text-shadow: 
-       0 1px 0 rgba(255,255,255,0.05),   
-  0 4px 8px rgba(0,0,0,0.6),        
-  0 8px 20px rgba(0,0,0,0.65); 
-       left: 7px;
+/* Styles spécifiques à la page de candidature */
+
+/* Style pour l'affichage si déjà candidat */
+.candidat-info {
+    text-align: center;
+    padding: 20px 0;
 }
 
-#lien{
-    height:50px;
-    font-family:'Dancing script',sans-serif;
-    font-size:30px;
-    color: #ECBE10;
-    position:absolute;
-    top:12px;
-      text-shadow:
-  0 1px 0 rgba(255,255,255,0.05),   
-  0 4px 8px rgba(0,0,0,0.6),        
-  0 8px 20px rgba(0,0,0,0.65);  
-    right: 35%;
-    width:140px;
-    border-radius:20px;
-    background:transparent;
-    text-align: center;
-    border: none;
-    
+.candidat-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid goldenrod;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
- #lien:hover{
-    background-color: white;
-    transition:0.3s;
-    color: black;
-    text-shadow:
-    2px 2px 3px rgba(218, 165, 32, 0.9),   
-    4px 4px 6px rgba(255, 215, 0, 0.9),    
-    6px 6px 12px rgba(255, 224, 120, 0.783); 
- }
- #vote{
-  height:50px;
-    font-family:'Dancing script',sans-serif;
-    font-size:30px;
-    color: #ECBE10;
-    position:absolute;
-    top:12px;
-     text-shadow: 
-      0 1px 0 rgba(255,255,255,0.05),   
-  0 4px 8px rgba(0,0,0,0.6),        
-  0 8px 20px rgba(0,0,0,0.65); 
-    right: 25%;
-    width:130px;
-    border-radius:20px;
-    background:transparent;
-    text-align: center;
-    border: none;
- }
-#vote:hover{
- background-color: white;
-    transition:0.3s;
-    color: black;
-    text-shadow:
-    2px 2px 3px rgba(218, 165, 32, 0.9),   
-    4px 4px 6px rgba(255, 215, 0, 0.9),    
-    6px 6px 12px rgba(255, 224, 120, 0.783); 
+
+.candidat-info p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #fff;
 }
- #cand{
-    height:50px;
-    font-family:'Dancing script',sans-serif;
-    font-size:30px;
-    color: #ECBE10;
-    position:absolute;
-    top:12px;
-     text-shadow: 
-     -2px -2px 2px rgba(0,0,0,0.8),  
-  2px 2px 4px rgba(0,0,0,0.6);
-    right: 13%;
-    width:150px;
-    border-radius:20px;
-    background:transparent;
-    text-align: center;
-    border: none;
- }
-#cand:hover{
-    background-color: white;
-    transition:0.3s;
-    color: black;
-    text-shadow:
-    2px 2px 3px rgba(218, 165, 32, 0.9),   
-    4px 4px 6px rgba(255, 215, 0, 0.9),    
-    6px 6px 12px rgba(255, 224, 120, 0.783); 
+
+.candidat-info p strong {
+    color: #ffd700;
 }
-#rest{
- height:50px;
-    font-family:'Dancing script',sans-serif;
-    font-size:30px;
-    color: #ECBE10;
-    position:absolute;
-    top:12px;
-     text-shadow: 
-     -2px -2px 2px rgba(0,0,0,0.8),  
-  2px 2px 4px rgba(0,0,0,0.6);
-    right: 1%;
-    width:150px;
-    border-radius:20px;
-    background:transparent;
-    text-align: center;
-    border: none;
+
+.candidat-info em {
+    color: #ccc;
+    font-size: 0.9rem;
 }
-#rest:hover{
-  background-color: white;
-    transition:0.3s;
-    color: black;
-    text-shadow:
-    2px 2px 3px rgba(218, 165, 32, 0.9),   
-    4px 4px 6px rgba(255, 215, 0, 0.9),    
-    6px 6px 12px rgba(255, 224, 120, 0.783); 
+
+body.page-candidature {
+    padding-top: 100px; /* Espace pour le header fixe */
 }
+
+/* Appliquer la police spéciale aux liens du header sur cette page */
+.page-candidature .menu nav a {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 1.4rem; /* Taille de police ajustée */
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* Le reste du style original pour le formulaire */
+
 body {
   font-family: Dancing Script;
   font-weight: bold;
   font-size: 15px;
-  background-image: url("../../../img/img-fond-candidature.jpg");
+  background-image: url("../images/background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -180,7 +95,7 @@ body {
     margin-bottom: 10px;
 }
 
-button {
+form button {
     display:block;
     margin: auto;
     width: 250px;

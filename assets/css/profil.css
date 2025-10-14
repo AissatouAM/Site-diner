@@ -192,6 +192,7 @@ main {
     background: none;
     border: none;
     padding: 0;
+    margin-left: auto; /* Aligner à l'extrême droite */
 }
 
 .hamburger .line {
