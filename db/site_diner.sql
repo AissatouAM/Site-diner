@@ -53,4 +53,3 @@ CREATE TABLE `vote` (
 -- via trigger ou recalculé par une requête d'agrégation :
 -- SELECT id_candidat, COUNT(*) FROM vote GROUP BY id_candidat;
 
-

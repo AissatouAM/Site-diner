@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../images/bacgroundac.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+    color: goldenrod;
+    flex-wrap: wrap;
+}
+
+.menu h3 {
+    margin: 0;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.menu a:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+    color: black;
+}
+
+main {
+    text-align: center;
+    padding: 30px 50px;
+    margin-top: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.btn {
+    display: block;
+    width: 60%;
+    max-width: 300px;
+    margin: 15px auto;
+    padding: 12px;
+    background: #333;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+    color: black;
+}
+
+.main-text {
+    color: #FFD700;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.main-text p {
+    color: #f8f8f8;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
