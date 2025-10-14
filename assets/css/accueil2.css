@@ -26,16 +26,15 @@ body {
     z-index: 1000;
     box-sizing: border-box;
     color: goldenrod;
-    flex-wrap: wrap;
 }
 
 .menu h3 {
     margin: 0;
-    color: black;
+    color: goldenrod; /* Changé pour être consistent */
     font-size: 1.2rem;
 }
 
-.menu a {
+.menu nav a {
     text-decoration: none;
     color: white;
     padding: 8px 15px;
@@ -45,6 +44,7 @@ body {
     transition: background-color 0.3s;
     display: inline-block;
     white-space: nowrap;
+    margin-left: 10px;
 }
 
 .menu a:hover {
@@ -56,7 +56,7 @@ body {
 main {
     text-align: center;
     padding: 30px 50px;
-    margin-top: 100px;
+    margin-top: 80px; /* Ajusté pour le header */
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
@@ -86,22 +86,62 @@ main {
 .main-text {
     color: #FFD700;
     text-align: center;
-    margin-top: 20px;
+    margin-bottom: 20px; /* Espace ajouté */
 }
 
 .main-text p {
     color: #f8f8f8;
 }
 
-.success-message {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    padding: 15px;
-    margin: 20px auto;
-    width: 80%;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* --- Styles pour le menu hamburger --- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* --- RESPONSIVITÉ --- */
+@media (max-width: 768px) {
+    .menu nav {
+        display: none; /* Cacher la nav normale sur mobile */
+        position: absolute;
+        top: 70px; /* Hauteur du header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .menu nav.active {
+        display: flex; /* Afficher la nav quand le menu est ouvert */
+    }
+
+    .menu nav a {
+        display: block;
+        margin: 10px 0;
+        width: 90%;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: flex; /* Afficher le hamburger sur mobile */
+    }
+    
+    main {
+        margin-top: 100px;
+        width: 90%;
+    }
 }

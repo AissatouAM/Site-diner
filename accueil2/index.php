@@ -19,11 +19,16 @@ if (!isset($_SESSION['prenom']) || !isset($_SESSION['nom'])) {
 <body>
     <header>
         <div class="menu">
-            <h3>Coder's dinner 2026-Election Roi & Reine</h3>
-            <nav>
-                <a href="../deconnexion/index.php">Déconnexion</a>
+            <h3>Coder's dinner 2026</h3>
+            <nav id="nav-links">
                 <a href="../profil/index.php">Profil</a>
+                <a href="../deconnexion/index.php">Déconnexion</a>
             </nav>
+            <button class="hamburger" id="hamburger-btn">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
         </div>
     </header>
     <main>
@@ -35,6 +40,16 @@ if (!isset($_SESSION['prenom']) || !isset($_SESSION['nom'])) {
         <a href="../vote/index.php" class="btn">Voter pour un candidat</a>
 
     </main>
+
+    <script>
+        // Script pour le menu hamburger
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>

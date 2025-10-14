@@ -54,10 +54,15 @@ foreach ($votes as $vote) {
     <header>
         <div class="menu">
             <h3>Mon Profil</h3>
-            <nav>
+            <nav id="nav-links">
                 <a href="../accueil2/index.php">Accueil</a>
                 <a href="../deconnexion/index.php">Déconnexion</a>
             </nav>
+            <button class="hamburger" id="hamburger-btn">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
         </div>
     </header>
 
@@ -137,6 +142,7 @@ foreach ($votes as $vote) {
     </main>
 
     <script>
+        // Script pour le formulaire d'édition
         const displayCard = document.getElementById('profile-display');
         const editCard = document.getElementById('profile-edit');
         const editBtn = document.getElementById('edit-btn');
@@ -150,6 +156,14 @@ foreach ($votes as $vote) {
         cancelBtn.addEventListener('click', () => {
             editCard.style.display = 'none';
             displayCard.style.display = 'block';
+        });
+
+        // Script pour le menu hamburger
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
     </script>
 
