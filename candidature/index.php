@@ -56,42 +56,48 @@ $candidat_existant = $stmt_candidat->fetch(PDO::FETCH_ASSOC);
 
     <div class="form">
         <?php if ($candidat_existant): ?>
-            <div class="candidat-info">
+            <!-- Vue d'affichage (par défaut) -->
+            <div class="candidat-info" id="candidat-display">
                 <h1 id="h1">Vous êtes déjà candidat !</h1>
                 <img src="../assets/images/candidats/<?php echo htmlspecialchars($candidat_existant['photo']); ?>" alt="Votre photo de profil">
                 <p><strong>Titre:</strong> <?php echo ($candidat_existant['genre_candidat'] == 'masculin') ? 'Roi' : 'Reine'; ?></p>
-                <p>Vous apparaissez dans la liste des candidats avec le nom <strong><?php echo htmlspecialchars($candidat_existant['prenom']) . ' ' . htmlspecialchars($candidat_existant['nom']); ?></strong>.</p>
+                <p><strong>Nom complet:</strong> <?php echo htmlspecialchars($candidat_existant['prenom']) . ' ' . htmlspecialchars($candidat_existant['nom']); ?></p>
+                <p><strong>Niveau d'étude:</strong> <?php echo htmlspecialchars($candidat_existant['niveau']); ?></p>
+                
+                <button type="button" class="btn-modify" id="btn-edit">Modifier ma candidature</button>
             </div>
 
-            <hr style="border-color: #555; margin: 30px 0;">
-
-            <form action="update_candidature.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="id_candidat" value="<?php echo $candidat_existant['id_candidat']; ?>">
-
-                <fieldset id="middle">
-                    <legend>Modifier mon niveau d'étude</legend>
-                    <input type="radio" name="niveau" value="DUT 1" <?php if($candidat_existant['niveau'] == 'DUT 1') echo 'checked'; ?>><label>DUT 1</label>
-                    <input type="radio" name="niveau" value="DUT 2" <?php if($candidat_existant['niveau'] == 'DUT 2') echo 'checked'; ?>><label>DUT 2</label>
-                    <input type="radio" name="niveau" value="Licence 3" <?php if($candidat_existant['niveau'] == 'Licence 3') echo 'checked'; ?>><label>Licence 3</label>
-                </fieldset>
-
-                <fieldset id="titre">
-                    <legend>Modifier mon titre</legend>
-                    <input type="radio" name="titre" value="roi" <?php if($candidat_existant['genre_candidat'] == 'masculin') echo 'checked'; ?>><label>Roi</label>
-                    <input type="radio" name="titre" value="reine" <?php if($candidat_existant['genre_candidat'] == 'feminin') echo 'checked'; ?>><label>Reine</label>
-                </fieldset>
-
-                <fieldset id="last">
-                    <legend>Changer ma photo (optionnel)</legend>
-                    <input type="file" name="new_photo" accept="image/*">
-                </fieldset><br>
+            <!-- Formulaire de modification (caché par défaut) -->
+            <div class="candidat-edit" id="candidat-edit" style="display: none;">
+                <h1 id="h1">Modifier ma candidature</h1>
                 
-                <button type="submit">Valider les modifications</button>
-            </form>
+                <form action="update_candidature.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id_candidat" value="<?php echo $candidat_existant['id_candidat']; ?>">
+
+                    <fieldset id="middle">
+                        <legend>Modifier mon niveau d'étude</legend>
+                        <input type="radio" name="niveau" value="DUT 1" <?php if($candidat_existant['niveau'] == 'DUT 1') echo 'checked'; ?>><label>DUT 1</label>
+                        <input type="radio" name="niveau" value="DUT 2" <?php if($candidat_existant['niveau'] == 'DUT 2') echo 'checked'; ?>><label>DUT 2</label>
+                        <input type="radio" name="niveau" value="DUT Mame" <?php if($candidat_existant['niveau'] == 'DUT Mame') echo 'checked'; ?>><label>DUT Mame</label>
+                    </fieldset>
+
+                    <fieldset id="titre">
+                        <legend>Modifier mon titre</legend>
+                        <input type="radio" name="titre" value="roi" <?php if($candidat_existant['genre_candidat'] == 'masculin') echo 'checked'; ?>><label>Roi</label>
+                        <input type="radio" name="titre" value="reine" <?php if($candidat_existant['genre_candidat'] == 'feminin') echo 'checked'; ?>><label>Reine</label>
+                    </fieldset>
+
+                    <fieldset id="last">
+                        <legend>Changer ma photo (optionnel)</legend>
+                        <input type="file" name="new_photo" accept="image/*">
+                    </fieldset><br>
+                    
+                    <button type="submit">Valider les modifications</button>
+                    <button type="button" class="btn-cancel" id="btn-cancel">Annuler</button>
+                </form>
+            </div>
 
         <?php else: ?>
-            <h1>vnron</h1>
-            <h1>uceubb</h1>
             <h1 id="h1">Tu veux être Roi ou Reine des codeurs ?</h1>
             <h2 id="h2">Dépose ta candidature!</h2>
 
@@ -134,6 +140,26 @@ $candidat_existant = $stmt_candidat->fetch(PDO::FETCH_ASSOC);
     hamburgerBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
+
+    // Script pour le toggle affichage/édition de la candidature
+    const candidatDisplay = document.getElementById('candidat-display');
+    const candidatEdit = document.getElementById('candidat-edit');
+    const btnEdit = document.getElementById('btn-edit');
+    const btnCancel = document.getElementById('btn-cancel');
+
+    if (btnEdit) {
+        btnEdit.addEventListener('click', () => {
+            candidatDisplay.style.display = 'none';
+            candidatEdit.style.display = 'block';
+        });
+    }
+
+    if (btnCancel) {
+        btnCancel.addEventListener('click', () => {
+            candidatEdit.style.display = 'none';
+            candidatDisplay.style.display = 'block';
+        });
+    }
   </script>
 </body>
 </html>

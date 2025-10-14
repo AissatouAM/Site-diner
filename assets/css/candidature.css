@@ -1,25 +1,41 @@
 /* Styles spécifiques à la page de candidature */
 
+/* S'assurer que le header reste au-dessus de tout */
+.page-candidature header,
+.page-candidature .menu {
+    z-index: 9999 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 /* Style pour l'affichage si déjà candidat */
 .candidat-info {
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .candidat-info img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid goldenrod;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 0 20px rgba(218, 165, 32, 0.6);
 }
 
 .candidat-info p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 1.3rem;
+    line-height: 2;
     color: #fff;
+    margin: 15px 0;
 }
 
 .candidat-info p strong {
@@ -31,8 +47,52 @@
     font-size: 0.9rem;
 }
 
-body.page-candidature {
-    padding-top: 100px; /* Espace pour le header fixe */
+/* Style pour le mode édition */
+.candidat-edit {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Boutons de modification */
+.btn-modify, .btn-cancel {
+    display: block;
+    margin: 25px auto;
+    width: 80%;
+    max-width: 280px;
+    height: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Dancing Script', sans-serif;
+    border-radius: 15px;
+    border: 2px solid goldenrod;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-modify {
+    background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
+    color: black;
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.5);
+}
+
+.btn-modify:hover {
+    background: linear-gradient(135deg, #fff6a1 0%, #ffd700 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(218, 165, 32, 0.8);
+}
+
+.btn-cancel {
+    background: rgba(100, 100, 100, 0.7);
+    color: white;
+    border-color: #888;
+    margin-top: 10px;
+}
+
+.btn-cancel:hover {
+    background: rgba(150, 150, 150, 0.9);
+    color: white;
+    transform: scale(1.02);
 }
 
 /* Appliquer la police spéciale aux liens du header sur cette page */
@@ -45,7 +105,7 @@ body.page-candidature {
 
 /* Le reste du style original pour le formulaire */
 
-body {
+body.page-candidature {
   font-family: Dancing Script;
   font-weight: bold;
   font-size: 15px;
@@ -56,6 +116,43 @@ body {
   background-attachment: fixed;
   backdrop-filter: blur(5px);
   cursor: pointer;
+  padding-top: 100px; /* Espace pour le header fixe - IMPORTANT */
+  padding-bottom: 50px; /* Espace en bas de page */
+  min-height: 100vh;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  body.page-candidature {
+    padding-top: 90px;
+  }
+
+  .candidat-info {
+    width: 95%;
+    padding: 20px 15px;
+  }
+
+  .candidat-info img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .candidat-info p {
+    font-size: 1.1rem;
+  }
+
+  #h1, #h2 {
+    font-size: 22px;
+  }
+
+  form {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .btn-modify, .btn-cancel {
+    width: 90%;
+  }
 }
 
 #haut{
@@ -96,24 +193,40 @@ body {
 }
 
 form button {
-    display:block;
-    margin: auto;
-    width: 250px;
+    display: block;
+    margin: 10px auto;
+    width: 85%;
+    max-width: 280px;
     height: 50px;
-    font-size: 27px;
+    font-size: 1.2rem;
     font-weight: bold;
-    font-weight: bold;
-    font-family: Dancing Script;
+    font-family: 'Dancing Script', sans-serif;
     border-radius: 15px;
+    border: 2px solid goldenrod;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button[type="submit"] {
+    background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
+    color: black;
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.5);
+}
+
+form button[type="submit"]:hover {
+    background: linear-gradient(135deg, #fff6a1 0%, #ffd700 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(218, 165, 32, 0.8);
 }
 
 #h1 { 
     text-align: center;
     color: silver;
-    margin-top: 110px;
-    margin-left: -18px;
-    width: 400px ;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 450px;
     font-size: 28px;
+    padding: 0 10px;
     text-shadow:
   0 1px 0 rgba(255,255,255,0.05),   /* léger highlight */
   0 4px 8px rgba(0,0,0,0.6),        /* ombre portée profonde */
@@ -123,9 +236,11 @@ form button {
 #h2 { 
     text-align: center;
     color: silver;
-    width: 400px ;
-    margin-left: -20px;
+    width: 100%;
+    max-width: 450px;
+    margin: 10px auto 20px;
     font-size: 28px;
+    padding: 0 10px;
     text-shadow:
   0 1px 0 rgba(255,255,255,0.05),   
   0 4px 8px rgba(0,0,0,0.6),        
@@ -158,25 +273,39 @@ fieldset{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 form{
   display: flex;
   flex-direction: column;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
   justify-content: center;
   align-items: center;
-  width: 340px;
-  height:520px;
-  padding: 15px;
-  border:2px solid rgb(142, 130, 100);
+  width: 90%;
+  max-width: 400px;
+  min-height: 520px;
+  padding: 25px;
+  border: 2px solid rgb(142, 130, 100);
   border-radius: 50px;
   background-image: url(../../../img/img-fond-candidature.jpg);
   background-position: center;
   background-size: cover;
   color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 10px 2px rgba(218, 165, 32, 0.9);
+  box-shadow: 0px 0px 15px 3px rgba(218, 165, 32, 0.9);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .infos-input {
