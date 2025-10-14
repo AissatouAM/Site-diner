@@ -26,11 +26,11 @@
     ?>
 
     <form class="register-form" method="post" action="../php/index.php">
-      <input type="tel" name="numero"
+      <input type="tel" name="telephone"
              placeholder="Numéro de téléphone"
              pattern="^(77|76|75|78|71|70)[0-9]{7}$"
              title="Veuillez entrer un numéro de téléphone valide (ex: 771234567)"
-             value="<?= isset($_SESSION['last_numero']) ? htmlspecialchars($_SESSION['last_numero']) : '' ?>"
+             value="<?= isset($_SESSION['last_telephone']) ? htmlspecialchars($_SESSION['last_telephone']) : '' ?>"
              required>
 
       <input type="password" id="password" name="mdp" placeholder="Mot de passe" required><br><br>

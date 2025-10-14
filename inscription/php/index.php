@@ -30,7 +30,7 @@ if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
 }
 
 // 4. Vérifier que le numéro n'existe pas déjà
-$stmt = $pdo->prepare("SELECT id FROM utilisateurs WHERE numero = ?");
+$stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE telephone = ?");
 $stmt->execute([$telephone]);
 if ($stmt->fetch()) {
     $_SESSION['erreur_numero'] = "Ce numéro est déjà utilisé.";
@@ -42,7 +42,7 @@ if ($stmt->fetch()) {
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // 6. Insérer l'utilisateur dans la base
-$stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, numero, mot_de_passe) VALUES (?, ?, ?, ?)");
+$stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, telephone, mot_de_passe) VALUES (?, ?, ?, ?)");
 $stmt->execute([$prenom, $nom, $telephone, $hashedPassword]);
 
 // 7. Démarrer la session

@@ -21,7 +21,7 @@ if (!isset($_SESSION['prenom']) || !isset($_SESSION['nom'])) {
         <div class="menu">
             <h3>Coder's dinner 2026-Election Roi & Reine</h3>
             <nav>
-                <a href="../accueil1/index.php" onclick="return confirm('voulez-vous vraiment vous deconnecter?')">Déconnexion</a>
+                <a href="../deconnexion/index.php">Déconnexion</a>
                 <a href="../profil/index.php">Profil</a>
             </nav>
         </div>

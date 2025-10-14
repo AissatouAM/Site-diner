@@ -1,0 +1,229 @@
+/* Styles généraux de la page */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../images/bacgroundac.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #f5f5f5;
+    margin: 0;
+    padding-top: 80px; /* Espace pour le header fixe */
+}
+
+/* Header */
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu h3 {
+    margin: 0;
+    color: goldenrod;
+    font-size: 1.5rem;
+}
+
+.menu nav a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 10px;
+}
+
+.menu nav a:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+    color: black;
+}
+
+/* Contenu principal */
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Carte de profil et section de vote */
+.profile-card, .votes-section, .edit-profile-card {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.profile-card h2, .votes-section h2, .edit-profile-card h2 {
+    color: goldenrod;
+    border-bottom: 2px solid goldenrod;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.profile-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.profile-card p strong {
+    color: #ffd700;
+}
+
+/* Conteneur pour les cartes de vote */
+.vote-cards-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Cartes de vote individuelles */
+.vote-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+.vote-card h3 {
+    color: #ffd700;
+    margin-top: 0;
+}
+
+.vote-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid goldenrod;
+    margin-bottom: 15px;
+}
+
+.vote-card p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.no-vote {
+    color: #ccc;
+    font-style: italic;
+    margin-top: 50px; /* Centre verticalement quand il n'y a pas d'image */
+}
+
+/* Styles pour le formulaire d'édition */
+.edit-profile-card {
+    display: none; /* Caché par défaut */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: white;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffd700;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-secondary {
+    background-color: #555;
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- RESPONSIVITÉ --- */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu nav {
+        margin-top: 10px;
+    }
+
+    .menu nav a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .vote-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .vote-card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu h3 {
+        font-size: 1.2rem;
+    }
+
+    .menu nav a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+}
