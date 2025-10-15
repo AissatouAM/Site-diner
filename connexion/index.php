@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Connexion</title>
-  <link rel="stylesheet" href="../../assets/css/connexion.css">
+  <link rel="stylesheet" href="../assets/css/connexion.css">
   <style>
     .message-erreur {
       color: red;
@@ -34,7 +34,7 @@
 
 <body>
   <div class="container">
-    <a href="../../accueil1/index.php" class="home-link" title="Retour à l'accueil">
+    <a href="../Accueil/index.php" class="home-link" title="Retour à l'accueil">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
         </svg>
@@ -48,7 +48,7 @@
     }
     ?>
 
-    <form class="register-form" method="post" action="../php/index.php">
+    <form class="register-form" method="post" action="./php/index.php">
       <input type="tel" name="telephone"
              placeholder="Numéro de téléphone"
              pattern="^(77|76|75|78|71|70)[0-9]{7}$"
@@ -60,7 +60,7 @@
 
       <button type="submit" class="bouton">Se connecter</button><br><br>
 
-      <p class="message">Pas encore de compte? <a href="../../inscription/html/index.php">S'inscrire</a></p>
+      <p class="message">Pas encore de compte? <a href="../inscription/index.php">S'inscrire</a></p>
 
       <a href="#" onclick="afficherMessage(); return false;">Mot de passe oublié ?</a>
       <div class="message" aria-live="polite"></div>

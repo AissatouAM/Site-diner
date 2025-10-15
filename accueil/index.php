@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/accueil1.css">
+    <link rel="stylesheet" href="../assets/css/accueil.css">
     <title>accueil</title>
 </head>
 <body>
@@ -39,8 +39,8 @@
 
         </div>
         <div class="button-container">
-            <button class="buttonup" onclick="window.location.href='../inscription/html/index.php'">S'inscrire</button>
-            <button class="buttonin" onclick="window.location.href='../connexion/html/index.php'">Se connecter </button>
+            <button class="buttonup" onclick="window.location.href='../inscription/index.php'">S'inscrire</button>
+            <button class="buttonin" onclick="window.location.href='../connexion/index.php'">Se connecter </button>
         </div>
     </main>
     <script src="../assets/js/countdown.js"></script>
