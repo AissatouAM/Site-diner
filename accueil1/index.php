@@ -38,8 +38,10 @@
             </div>
 
         </div>
-        <button class="buttonup" onclick="window.location.href='../inscription/html/index.php'">S'inscrire</button>
-        <button class="buttonin" onclick="window.location.href='../connexion/html/index.php'">Se connecter </button>
+        <div class="button-container">
+            <button class="buttonup" onclick="window.location.href='../inscription/html/index.php'">S'inscrire</button>
+            <button class="buttonin" onclick="window.location.href='../connexion/html/index.php'">Se connecter </button>
+        </div>
     </main>
     <script src="../assets/js/countdown.js"></script>
 </body>

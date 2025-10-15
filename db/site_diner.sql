@@ -50,6 +50,10 @@ CREATE TABLE `votes` (
     INDEX (`id_utilisateur`), 
     INDEX (`id_candidat`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
+
+ALTER TABLE `utilisateurs` ADD `role` ENUM('user', 'admin') NOT NULL DEFAULT 'user' AFTER `mot_de_passe`;
+
+ALTER TABLE `candidats` ADD `status` ENUM('approved', 'pending', 'rejected') NOT NULL DEFAULT 'approved' AFTER `vote`;
  
 -- Note: la colonne `vote` dans `candidat` est un champ de cache; il peut être mis à jour 
 -- via trigger ou recalculé par une requête d'agrégation : 

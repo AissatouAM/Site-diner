@@ -1,0 +1,72 @@
+
+
+
+
+
+
+
+body{
+
+ background: url('hell.jpg') ;
+      color: goldenrod;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size:  50px;
+      text-shadow: 2px 2px 5px black;
+      
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 50px;
+
+
+
+     
+      
+      
+    }
+
+  
+
+    .card {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      box-shadow: 0 0 15px gold;
+      
+      background: black;
+      opacity:0.8;
+    }
+
+    .card h2 {
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    .card img {
+      width: 150x;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 10px;
+      border:2px solid white;
+    }
+
+    .votes {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    
+
+
+
+

@@ -18,6 +18,18 @@
             border-radius: 10px;
             border: 2px solid rgba(255, 0, 0, 0.3);
         }
+
+        .home-link {
+            text-decoration: none;
+            color: #daa520; /* Couleur dorée */
+            display: block;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .home-link:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -25,6 +37,11 @@
     <div class="fond"></div>
     <div class="centre"></div>
     <div class="container">
+        <a href="../../accueil1/index.php" class="home-link" title="Retour à l'accueil">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+        </a>
         <h2>Inscription</h2>
 
         <?php

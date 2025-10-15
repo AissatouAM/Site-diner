@@ -123,21 +123,21 @@ foreach ($votes as $vote) {
             <h2>Mes votes</h2>
             <div class="vote-cards-container">
                 <div class="vote-card">
-                    <h3>Mon vote Masculin</h3>
+                    <h3>Mon vote Masculin (Roi)</h3>
                     <?php if ($vote_masculin): ?>
-                        <img src="../assets/images/<?php echo htmlspecialchars($vote_masculin['photo']); ?>" alt="Photo de <?php echo htmlspecialchars($vote_masculin['prenom']); ?>">
+                        <img src="../assets/images/candidats/<?php echo htmlspecialchars($vote_masculin['photo']); ?>" alt="Photo de <?php echo htmlspecialchars($vote_masculin['prenom']); ?>">
                         <p><?php echo htmlspecialchars($vote_masculin['prenom']) . ' ' . htmlspecialchars($vote_masculin['nom']); ?></p>
                     <?php else: ?>
-                        <p class="no-vote">Vous n'avez pas encore voté pour un candidat masculin.</p>
+                        <p class="no-vote">Vous n'avez pas encore voté pour un Roi.</p>
                     <?php endif; ?>
                 </div>
                 <div class="vote-card">
-                    <h3>Mon vote Féminin</h3>
+                    <h3>Mon vote Féminin (Reine)</h3>
                     <?php if ($vote_feminin): ?>
-                        <img src="../assets/images/<?php echo htmlspecialchars($vote_feminin['photo']); ?>" alt="Photo de <?php echo htmlspecialchars($vote_feminin['prenom']); ?>">
+                        <img src="../assets/images/candidats/<?php echo htmlspecialchars($vote_feminin['photo']); ?>" alt="Photo de <?php echo htmlspecialchars($vote_feminin['prenom']); ?>">
                         <p><?php echo htmlspecialchars($vote_feminin['prenom']) . ' ' . htmlspecialchars($vote_feminin['nom']); ?></p>
                     <?php else: ?>
-                        <p class="no-vote">Vous n'avez pas encore voté pour une candidate féminine.</p>
+                        <p class="no-vote">Vous n'avez pas encore voté pour une Reine.</p>
                     <?php endif; ?>
                 </div>
             </div>

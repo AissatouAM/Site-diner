@@ -47,7 +47,13 @@ unset($_SESSION['last_telephone']); // On efface le numéro retenu
 $_SESSION['utilisateur_id'] = $user['id_utilisateur'];
 $_SESSION['prenom'] = $user['prenom'];
 $_SESSION['nom'] = $user['nom'];
+$_SESSION['user_role'] = $user['role']; // Ajout du rôle à la session
 
-header("Location: ../../accueil2/index.php");
+// Redirection en fonction du rôle
+if ($user['role'] === 'admin') {
+    header("Location: ../../admin/index.php");
+} else {
+    header("Location: ../../accueil2/index.php");
+}
 exit();
 
