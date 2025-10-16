@@ -1,5 +1,5 @@
 const title = document.getElementById("perr");
-const colors = ["gold", "crimson", "magenta", "yellow"];
+const colors = ["gold", "yellow"];
 let index = 0;
 
 setInterval(() => {
@@ -7,7 +7,6 @@ setInterval(() => {
   title.style.transform = "rotate(" + (Math.random() * 4 - 2) + "deg)";
   index = (index + 1) % colors.length;
 }, 700);
-
 
 const cards = document.querySelectorAll(".card");
 cards.forEach((card, i) => {
@@ -21,18 +20,6 @@ cards.forEach((card, i) => {
 });
 
 
-cards.forEach(card => {
-  card.addEventListener("mouseenter", () => {
-    card.style.transform = "scale(1.05)";
-    card.style.boxShadow = "0 0 30px gold";
-    card.style.transition = "all 0.3s ease";
-  });
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "scale(1)";
-    card.style.boxShadow = "0 0 15px gold";
-  });
-});
-
 
 function createConfetti() {
   const confetti = document.createElement("div");
@@ -40,14 +27,12 @@ function createConfetti() {
   confetti.style.left = Math.random() * 100 + "vw";
   confetti.style.animationDuration = 3 + Math.random() * 2 + "s";
   document.body.appendChild(confetti);
-
   setTimeout(() => confetti.remove(), 5000);
 }
-
 setInterval(createConfetti, 400);
 
 
-const winnerText = document.querySelector("h2[style*='red']");
+const winnerText = document.querySelector("h2[style*='gold']");
 setInterval(() => {
   winnerText.style.textShadow = `0 0 10px gold, 0 0 20px orange, 0 0 30px yellow`;
   setTimeout(() => {
@@ -69,9 +54,6 @@ style.textContent = `
   z-index: 9999;
 }
 @keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
+  to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }`;
 document.head.appendChild(style);
