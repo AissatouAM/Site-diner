@@ -20,7 +20,8 @@ body {
 
 main {
     text-align: center;
-    margin-bottom: 100px; /* Réduction de la marge */
+    margin-bottom: 100px;
+    /* Réduction de la marge */
 }
 
 .logo {
@@ -30,18 +31,21 @@ main {
     -webkit-text-fill-color: transparent;
     font-size: 5rem;
     margin-bottom: 40px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Dancing Script', sans-serif;
     margin-top: 90px;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Espacement flexible */
-    margin-top: 100px; /* Marge supérieure ajustée */
+    gap: 20px;
+    /* Espacement flexible */
+    margin-top: 100px;
+    /* Marge supérieure ajustée */
 }
 
-.buttonup, .buttonin {
+.buttonup,
+.buttonin {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     border: 1px solid black;
@@ -50,7 +54,8 @@ main {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 0; /* Suppression des marges fixes */
+    margin: 0;
+    /* Suppression des marges fixes */
 }
 
 .time-value {
@@ -62,7 +67,7 @@ main {
 
 .mots {
     font-size: 30px;
-    font-family: "Dancing Script", cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: normal;
@@ -86,37 +91,37 @@ main {
 
 .message {
     font-size: 30px;
-    font-family: "Dancing Script", cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: normal;
 }
 
+
 /* --- Media Queries pour le responsive --- */
+
 @media (max-width: 768px) {
     body {
         margin: 20px;
     }
-
     .logo {
         font-size: 3rem;
         margin-top: 50px;
         margin-bottom: 20px;
     }
-
     .grille {
         flex-direction: column;
         gap: 15px;
     }
-
     .button-container {
         flex-direction: column;
         gap: 15px;
         margin-top: 40px;
     }
-
-    .buttonup, .buttonin {
+    .buttonup,
+    .buttonin {
         width: 80%;
-        margin: 0 auto; /* Centrer les boutons */
+        margin: 0 auto;
+        /* Centrer les boutons */
     }
 }
