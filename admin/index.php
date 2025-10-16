@@ -4,7 +4,7 @@ session_start();
 // Sécurité : vérifier si l'utilisateur est un administrateur
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     $_SESSION['error_message'] = "Accès non autorisé.";
-    header('Location: ../connexion/html/index.php');
+    header('Location: ../connexion/index.php');
     exit();
 }
 ?>

@@ -4,7 +4,7 @@ require_once("../config/db_connect.php");
 
 // 1. Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['utilisateur_id'])) {
-    header("Location: ../connexion/html/index.php");
+    header("Location: ../connexion/index.php");
     exit();
 }
 
@@ -30,7 +30,7 @@ $candidat_existant = $stmt_candidat->fetch(PDO::FETCH_ASSOC);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dancing+Script:wght@400..700&family=Playwrite+CA:wght@100..400&display=swap" rel="stylesheet">
   <!-- Lier les deux feuilles de style -->
-  <link rel="stylesheet" href="../assets/css/accueil2.css">
+  <link rel="stylesheet" href="../assets/css/tableaudebord.css">
   <link rel="stylesheet" href="../assets/css/candidature.css">
   <title>Page Candidature</title>
 </head>
@@ -40,7 +40,7 @@ $candidat_existant = $stmt_candidat->fetch(PDO::FETCH_ASSOC);
     <div class="menu">
         <h3>Candidature</h3>
         <nav id="nav-links">
-            <a href="../accueil2/index.php">Accueil</a>
+            <a href="../tableaudebord/index.php">Accueil</a>
             <a href="../profil/index.php">Profil</a>
             <a href="../deconnexion/index.php">Déconnexion</a>
         </nav>

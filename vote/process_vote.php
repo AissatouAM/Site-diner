@@ -4,7 +4,7 @@ require_once('../config/db_connect.php');
 
 // Sécurité : l'utilisateur doit être connecté
 if (!isset($_SESSION['utilisateur_id'])) {
-    header('Location: ../connexion/html/index.php');
+    header('Location: ../connexion/index.php');
     exit();
 }
 

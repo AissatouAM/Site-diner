@@ -12,14 +12,14 @@ $_SESSION['last_telephone'] = $telephone;
 // Vérifier que les champs sont remplis
 if (empty($telephone) || empty($mot_de_passe)) {
     $_SESSION['erreur_connexion'] = "Veuillez remplir tous les champs.";
-    header("Location: ../html/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
 // Vérification du format du numéro
 if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
     $_SESSION['erreur_connexion'] = "Numéro invalide.";
-    header("Location: ../html/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -31,14 +31,14 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // Vérification de l'existence du compte
 if (!$user) {
     $_SESSION['erreur_connexion'] = "Aucun compte trouvé avec ce numéro.";
-    header("Location: ../html/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
 // Vérification du mot de passe
 if (!password_verify($mot_de_passe, $user['mot_de_passe'])) {
     $_SESSION['erreur_connexion'] = "Mot de passe incorrect.";
-    header("Location: ../html/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -53,7 +53,7 @@ $_SESSION['user_role'] = $user['role']; // Ajout du rôle à la session
 if ($user['role'] === 'admin') {
     header("Location: ../../admin/index.php");
 } else {
-    header("Location: ../../accueil2/index.php");
+    header("Location: ../../tableaudebord/index.php");
 }
 exit();
 
