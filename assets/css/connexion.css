@@ -1,5 +1,5 @@
 body {
-    font-family: 'Dancing Script', cursive, Arial, Helvetica, sans-serif;
+    font-family: 'Dancing Script', sans-serif;
     background-image: url("../images/background.jpg");
     background-size: cover;
     background-position: center;
@@ -30,7 +30,7 @@ body {
 
 .container h2 {
     color: rgb(218, 175, 32);
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 30px;
@@ -43,9 +43,15 @@ body {
 }
 
 @keyframes shine {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .register-form input {
