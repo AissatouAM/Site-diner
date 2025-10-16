@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 body {
-    font-family: 'Dancing Script', cursive, Arial, Helvetica, sans-serif;
+    font-family: 'Dancing Script', sans-serif;
     background-image: url("../images/background.jpg");
     background-size: cover;
     background-position: center;
@@ -30,7 +31,7 @@ body {
 
 .container h2 {
     color: rgb(218, 175, 32);
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 30px;
@@ -43,9 +44,15 @@ body {
 }
 
 @keyframes shine {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .register-form input[type="text"],
@@ -59,7 +66,7 @@ body {
     outline: none;
     display: block;
     box-sizing: border-box;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-size: 1.2rem;
     transition: all 0.3s ease;
 }
@@ -78,7 +85,7 @@ body {
 .bouton {
     width: 70%;
     padding: 15px;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-size: 1.4rem;
     font-weight: bold;
     background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
@@ -98,7 +105,7 @@ body {
 
 a {
     color: rgb(218, 175, 32);
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-size: 1.1rem;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -111,21 +118,33 @@ a:hover {
 }
 
 .message {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', sans-serif;
     font-size: 1.1rem;
     margin-top: 15px;
 }
 
-
 input {
     background-color: rgba(255, 255, 255, 0.2);
     font-size: 14px;
+}
+
+input::placeholder {
+    color: white;
+    opacity: 0.9;
+}
+
+input::-webkit-input-placeholder {
     color: white;
 }
 
+input::-moz-placeholder {
+    color: white;
+}
 
-input::placeholder { color: white; opacity: 0.9; }
-input::-webkit-input-placeholder { color: white; }
-input::-moz-placeholder { color: white; }
-input:-ms-input-placeholder { color: white; }
-input:-moz-placeholder { color: white; }
+input:-ms-input-placeholder {
+    color: white;
+}
+
+input:-moz-placeholder {
+    color: white;
+}

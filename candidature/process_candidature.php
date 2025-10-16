@@ -4,7 +4,7 @@ require_once("../config/db_connect.php");
 
 // 1. Sécurité : Vérifier la méthode, la connexion et les données POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['utilisateur_id'])) {
-    header("Location: ../connexion/html/index.php");
+    header("Location: ../connexion/index.php");
     exit();
 }
 

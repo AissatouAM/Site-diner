@@ -7,11 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/inscription.css">
+    <link rel="stylesheet" href="../assets/css/inscription.css">
     <title>Inscription</title>
     <style>
         p[style*="color: red"] {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Dancing Script', sans-serif;
             font-size: 1.2rem;
             background: rgba(255, 0, 0, 0.1);
             padding: 10px;
@@ -37,7 +37,7 @@
     <div class="fond"></div>
     <div class="centre"></div>
     <div class="container">
-        <a href="../../accueil1/index.php" class="home-link" title="Retour à l'accueil">
+        <a href="../accueil/index.php" class="home-link" title="Retour à l'accueil">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
             </svg>
@@ -64,7 +64,7 @@
         }
         ?>
 
-        <form class="register-form" method="POST" action="../php/index.php">
+        <form class="register-form" method="POST" action="./php/index.php">
             <input type="text" name="prenom" placeholder="Prénom" value="<?= $pref_prenom ?>" required />
             <input type="text" name="nom" placeholder="Nom" value="<?= $pref_nom ?>" required />
             <input type="tel" name="telephone" pattern="[0-9]{9}" title="Veuillez entrer un numéro de téléphone valide (ex: 777777777)" 
@@ -74,7 +74,7 @@
             
             <button type="submit" class="bouton">S'inscrire</button>
              
-            <p class="message">Déjà inscrit? <a href="../../connexion/html/index.php">Se connecter</a></p>
+            <p class="message">Déjà inscrit? <a href="../connexion/index.php">Se connecter</a></p>
         </form>
         <?php
             if (isset($_SESSION['erreur_mdp'])) {

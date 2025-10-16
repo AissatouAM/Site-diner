@@ -5,7 +5,7 @@ require_once('../../config/db_connect.php');
 // Sécurité : vérifier si l'utilisateur est un administrateur
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     // Pas besoin de message, la redirection suffit
-    header('Location: ../../connexion/html/index.php');
+    header('Location: ../../connexion/index.php');
     exit();
 }
 

@@ -4,7 +4,7 @@ require_once('../../config/db_connect.php');
 
 // Sécurité
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
-    header('Location: ../../connexion/html/index.php');
+    header('Location: ../../connexion/index.php');
     exit();
 }
 

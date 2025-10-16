@@ -2,71 +2,95 @@
 
 
 
-
-
-
 body{
+    background: url('hell.jpg') ;
+    background-size: cover;
+    color: goldenrod;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
- background: url('hell.jpg') ;
-      color: goldenrod;
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
+h1 {
+    margin-top: 30px;
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px black;
+}
 
-    h1 {
-      margin-top: 30px;
-      font-size:  50px;
-      text-shadow: 2px 2px 5px black;
-      
-    }
+h2 { margin-bottom: 10px; }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 50px;
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
 
+.card {
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 15px;
+    width: 230px;
+    box-shadow: 0 0 15px gold;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
 
+.card h2 { color: gold; margin-bottom: 10px; font-size: 1.5rem; }
 
-     
-      
-      
-    }
+.card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+    border: 2px solid white;
+}
 
-  
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px gold;
+}
 
-    .card {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      border-radius: 15px;
-      width: 250px;
-      box-shadow: 0 0 15px gold;
-      
-      background: black;
-      opacity:0.8;
-    }
-
-    .card h2 {
-      color: gold;
-      margin-bottom: 10px;
-    }
-
-    .card img {
-      width: 150x;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-top: 10px;
-      border:2px solid white;
-    }
-
-    .votes {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-
-    
+.votes { font-size: 1.2rem; margin: 10px 0; }
 
 
+.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.top-right button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-right button:hover {
+    background-color: orange;
+}
 
 
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.2rem; }
+    .container { flex-direction: column; gap: 20px; }
+    .card { width: 90%; margin: 0 auto; }
+    .top-right button { padding: 8px 12px; font-size: 0.9rem; }
+}
+
+
+
+.card p {
+    color:white;
+}
