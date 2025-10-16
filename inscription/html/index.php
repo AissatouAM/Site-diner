@@ -11,7 +11,7 @@
     <title>Inscription</title>
     <style>
         p[style*="color: red"] {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Dancing Script', sans-serif;
             font-size: 1.2rem;
             background: rgba(255, 0, 0, 0.1);
             padding: 10px;
