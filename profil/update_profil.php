@@ -41,8 +41,10 @@ if (!$user || !password_verify($current_password, $user['mot_de_passe'])) {
     exit();
 }
 
+$old_telephone = $user['telephone'];
+
 // 2. Vérifier si le nouveau numéro de téléphone est déjà utilisé par quelqu'un d'autre
-if ($telephone !== $user['telephone']) {
+if ($telephone !== $old_telephone) {
     $stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE telephone = ?");
     $stmt->execute([$telephone]);
     if ($stmt->fetch()) {
@@ -61,6 +63,16 @@ $update_stmt = $pdo->prepare("
 
 if ($update_stmt->execute([$prenom, $nom, $telephone, $id_utilisateur])) {
     // Mettre à jour les informations de la session
+
+    //mettre directement le nouveau nom et prenom dans la candidature
+    $sync_candidat_stmt = $pdo->prepare("
+        UPDATE candidats 
+        SET prenom = ?, nom = ?, telephone = ?
+        WHERE telephone = ?
+    ");
+
+    $sync_candidat_stmt->execute([$prenom, $nom, $telephone, $old_telephone]);
+
     $_SESSION['prenom'] = $prenom;
     $_SESSION['nom'] = $nom;
     
