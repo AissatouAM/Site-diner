@@ -207,21 +207,6 @@ body.page-candidature {
 }
 
 
-/*#messageerreur {
- position: fixed;
- z-index: 1;
- top: 367px;
- font-size: 20px;
- width: 240px;
- color: lab(53.23% 80.11 67.22);
- min-height: 0;
-}
-
-#haut #error {
-  height: 80px;
-}
-*/
-
 #middle{
     width: 275px;
     margin: auto ;

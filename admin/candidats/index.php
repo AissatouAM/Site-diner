@@ -88,7 +88,7 @@ $candidats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </span>
                             </td>
                             <td class="actions">
-                                <a href="edit.php?id=<?= $candidat['id_candidat'] ?>" class="btn btn-edit">Modifier</a>
+                                <a href="delete.php?id=<?= $candidat['id_candidat'] ?>" class="btn btn-delete">Supprimer</a>
                                 <a href="update_status.php?id=<?= $candidat['id_candidat'] ?>" class="btn">Changer Statut</a>
                             </td>
                         </tr>

@@ -26,23 +26,40 @@ if ($id_to_delete == $_SESSION['utilisateur_id']) {
 }
 
 // 3. Procéder à la suppression
-try {
-    $stmt = $pdo->prepare("DELETE FROM utilisateurs WHERE id_utilisateur = ?");
-    $stmt->execute([$id_to_delete]);
 
-    // Vérifier si la suppression a bien eu lieu
-    if ($stmt->rowCount() > 0) {
-        $_SESSION['user_message'] = "L'utilisateur a été supprimé avec succès.";
+$candidature_message = "";
+
+try {
+    // DÉBUT DE LA TRANSACTION (pour assurer que les deux suppressions se fassent ou qu'aucune ne se fasse)
+    $pdo->beginTransaction();
+
+    // A. SUPPRIMER LA CANDIDATURE CORRESPONDANTE DANS LA TABLE 'candidats'
+    $stmt_candidat = $pdo->prepare("DELETE FROM candidats WHERE id_utilisateur = ?");
+    $stmt_candidat->execute([$id_to_delete]);
+
+    if ($stmt_candidat->rowCount() > 0) {
+        $candidature_message = "Candidature associée également supprimée.";
+    }
+    // B. SUPPRIMER L'UTILISATEUR DANS LA TABLE 'utilisateurs'
+    $stmt_user = $pdo->prepare("DELETE FROM utilisateurs WHERE id_utilisateur = ?");
+    $stmt_user->execute([$id_to_delete]);
+
+    // C. Vérifier le résultat et finaliser
+    if ($stmt_user->rowCount() > 0) {
+        $pdo->commit(); // Validation des deux suppressions
+        $_SESSION['user_message'] = "L'utilisateur a été supprimé avec succès. " . $candidature_message;
     } else {
+        $pdo->rollBack(); // Annulation de tout si l'utilisateur n'existait pas
         $_SESSION['user_message'] = "Erreur : L'utilisateur n'a pas pu être trouvé ou a déjà été supprimé.";
     }
 
 } catch (PDOException $e) {
-    // Gérer les erreurs de base de données (par exemple, contraintes de clé étrangère)
-    $_SESSION['user_message'] = "Erreur de base de données : " . $e->getMessage();
+    $pdo->rollBack(); 
+    $_SESSION['user_message'] = "Erreur de base de données : Suppression annulée. " . $e->getMessage();
 }
 
 // 4. Rediriger vers la liste des utilisateurs
 header('Location: index.php');
 exit();
 ?>
+
