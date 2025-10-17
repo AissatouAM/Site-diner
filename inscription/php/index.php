@@ -18,14 +18,14 @@ if (empty($prenom) || empty($nom) || empty($telephone) || empty($password) || em
 // 2. Vérifier que les mots de passe correspondent
 if ($password !== $confirm) {
    $_SESSION['erreur_mdp'] = "Les mots de passe ne correspondent pas." ;
-   header("Location: ../html/index.php");
+   header("Location: ../index.php");
     exit();
 }
 
 // 3. Vérifier le format du numéro (9 chiffres)
 if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
     $_SESSION['erreur_numero_invalide'] = "Numéro invalide. Le numéro doit commencer par 77, 76, 75, 78, 71 ou 70 et contenir 9 chiffres.";
-    header("Location: ../html/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -34,7 +34,7 @@ $stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE telephone =
 $stmt->execute([$telephone]);
 if ($stmt->fetch()) {
     $_SESSION['erreur_numero'] = "Ce numéro est déjà utilisé.";
-    header("Location: ../html/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -56,7 +56,7 @@ echo "
 <html lang='fr'>
 <head>
     <meta charset='UTF-8'>
-    <meta http-equiv='refresh' content='3;url=../../connexion/html/index.php'>
+    <meta http-equiv='refresh' content='3;url=../../connexion/index.php'>
     <title>Inscription réussie</title>
     <style>
         body {
@@ -86,7 +86,7 @@ echo "
     <div class='message-box'>
         <h2>✅ Inscription réussie !</h2>
         <p>Vous allez être redirigé vers la page de connexion dans quelques secondes...</p>
-        <p><a href='../../connexion/html/index.php'>Cliquez ici si la redirection ne se fait pas.</a></p>
+        <p><a href='../../connexion/index.php'>Cliquez ici si la redirection ne se fait pas.</a></p>
     </div>
 </body>
 </html>

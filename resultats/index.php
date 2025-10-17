@@ -1,7 +1,4 @@
-
-
 <?php
-
 $host = "localhost";
 $username = "root";
 $password = "";
@@ -14,15 +11,14 @@ try {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
 }
 
-
 try {
     // Roi
-    $stmtRoi = $pdo->prepare("SELECT * FROM candidats WHERE genre_candidat='masculin' ORDER BY vote DESC LIMIT 1");
+    $stmtRoi = $pdo->prepare("SELECT * FROM candidat WHERE genre_candidat='masculin' ORDER BY vote DESC LIMIT 1");
     $stmtRoi->execute();
     $roi = $stmtRoi->fetch(PDO::FETCH_ASSOC);
 
     // Reine
-    $stmtReine = $pdo->prepare("SELECT * FROM candidats WHERE genre_candidat='feminin' ORDER BY vote DESC LIMIT 1");
+    $stmtReine = $pdo->prepare("SELECT * FROM candidat WHERE genre_candidat='feminin' ORDER BY vote DESC LIMIT 1");
     $stmtReine->execute();
     $reine = $stmtReine->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -34,30 +30,36 @@ try {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Résultats </title>
+    <title>Résultats</title>
     <link rel="stylesheet" href="resultats.css">
-    
 </head>
 <body>
-  <h1 id="perr"> 👑CODERS'DINNER👑 </h1>
-  <h2 style="color: red;"><strong>🪄THE WINNERS🪄</strong></h2>
-  <div class="container">
-    
+
+<div class="top-right">
+    <a href="login.php"><button>Connexion</button></a>
+    <a href="dashboard.php"><button>Tableau de bord</button></a>
+</div>
+<br><br>
+<h1 id="perr"> 👑CODERS'DINNER👑 </h1>
+<h2 style="color:gold;"><i>🪄THE WINNERS🪄</i></h2>
+
+<div class="container">
+    <div class="card">
+        <h2>THE KING👑</h2>
+        <img src="../<?= $roi['photo']; ?>" alt="Photo du Roi">
+        <h2><?= $roi['prenom']." ". $roi['nom']; ?></h2>
+        <p>Votes : <?= $roi['vote']; ?></p>
+    </div>
 
     <div class="card">
-      <h2>THE KING👑</h2>
-    <img src="../<?= $roi['photo']; ?>"  alt="Photo du Roi">
-        <h2><?=$roi['prenom']." ". $roi['nom']; ?></h2>
-        <p>Votes : <?= $roi['vote']; ?></p>
-</div>
-<div class="card">
-      <h2>THE QUEEN👑</h2>
-      <img src="../<?= $reine['photo']; ?>" alt="Photo de la Reine">
+        <h2>THE QUEEN👑</h2>
+        <img src="../<?= $reine['photo']; ?>" alt="Photo de la Reine">
         <h2><?= $reine['prenom']." ". $reine['nom']; ?></h2>
         <p>Votes : <?= $reine['vote']; ?></p>
-        
     </div>
 </div>
+
 <script src="resultat.js"></script>
 </body>
 </html>
+

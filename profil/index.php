@@ -4,7 +4,7 @@ require_once("../config/db_connect.php");
 
 // 1. Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['utilisateur_id'])) {
-    header("Location: ../connexion/html/index.php");
+    header("Location: ../connexion/index.php");
     exit();
 }
 
@@ -17,7 +17,7 @@ $utilisateur = $stmt_user->fetch(PDO::FETCH_ASSOC);
 
 if (!$utilisateur) {
     session_destroy();
-    header("Location: ../connexion/html/index.php");
+    header("Location: ../connexion/index.php");
     exit();
 }
 
@@ -58,7 +58,7 @@ foreach ($votes as $vote) {
         <div class="menu">
             <h3>Mon Profil</h3>
             <nav id="nav-links">
-                <a href="../accueil2/index.php">Accueil</a>
+                <a href="../tableaudebord/index.php">Accueil</a>
                 <a href="../deconnexion/index.php">Déconnexion</a>
             </nav>
             <button class="hamburger" id="hamburger-btn">

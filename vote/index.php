@@ -4,7 +4,7 @@ require_once('../config/db_connect.php');
 
 // Sécurité : l'utilisateur doit être connecté pour voter
 if (!isset($_SESSION['utilisateur_id'])) {
-    header('Location: ../connexion/html/index.php');
+    header('Location: ../connexion/index.php');
     exit();
 }
 
@@ -51,7 +51,7 @@ foreach ($candidats as $candidat) {
         <div class="menu">
             <h3>Page de Vote</h3>
             <nav id="nav-links">
-                <a href="../accueil2/index.php">Accueil</a>
+                <a href="../tableaudebord/index.php">Accueil</a>
                 <a href="../profil/index.php">Profil</a>
                 <a href="index.php">Voter</a>
                 <a href="../deconnexion/index.php">Déconnexion</a>
