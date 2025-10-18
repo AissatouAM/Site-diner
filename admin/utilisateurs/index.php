@@ -28,6 +28,11 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .btn-delete {
+            font-family: 'Dancing Script', cursive, Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
 
@@ -78,7 +83,14 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?= htmlspecialchars($user['role']) ?></td>
                                 <td class="actions">
                                     <a href="edit.php?id=<?= htmlspecialchars($user['id_utilisateur']) ?>" class="btn btn-edit">Modifier</a>
-                                    <a href="delete.php?id=<?= $user['id_utilisateur'] ?>" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.');">Supprimer</a>
+                                    <form action="delete.php" method="POST" 
+                                        onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer l\'utilisateur <?= htmlspecialchars($user['telephone']) ?> ? Cette action est irréversible.');" 
+                                        style="display:inline;">
+                                        
+                                        <input type="hidden" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>">
+                                        
+                                        <button type="submit" class="btn btn-delete">Supprimer</button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

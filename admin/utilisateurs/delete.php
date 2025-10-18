@@ -9,17 +9,28 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     exit();
 }
 
-// 1. Valider l'ID de l'utilisateur
-$id_to_delete = $_GET['id'] ?? null;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $_SESSION['user_message'] = "Erreur : Méthode de requête non autorisée.";
+    header('Location: index.php');
+    exit();
+}
 
-if (!$id_to_delete || !filter_var($id_to_delete, FILTER_VALIDATE_INT)) {
-    $_SESSION['user_message'] = "Erreur : ID d'utilisateur invalide.";
+// 1. Récupérer et Valider le numéro de téléphone via POST
+// Le nom du champ doit correspondre à celui dans le formulaire (ici 'telephone')
+$phone_to_delete = $_POST['telephone'] ?? null;
+
+// Nettoyage de la donnée
+$phone_to_delete = trim($phone_to_delete);
+
+//vérifier si le téléphone est vide après nettoyage
+if (empty($phone_to_delete)) {
+    $_SESSION['user_message'] = "Erreur : Le numéro de téléphone est manquant.";
     header('Location: index.php');
     exit();
 }
 
 // 2. Empêcher un admin de se supprimer lui-même
-if ($id_to_delete == $_SESSION['utilisateur_id']) {
+if ($phone_to_delete == $_SESSION['telephone']) {
     $_SESSION['user_message'] = "Erreur : Vous ne pouvez pas supprimer votre propre compte administrateur.";
     header('Location: index.php');
     exit();
@@ -34,15 +45,15 @@ try {
     $pdo->beginTransaction();
 
     // A. SUPPRIMER LA CANDIDATURE CORRESPONDANTE DANS LA TABLE 'candidats'
-    $stmt_candidat = $pdo->prepare("DELETE FROM candidats WHERE id_utilisateur = ?");
-    $stmt_candidat->execute([$id_to_delete]);
+    $stmt_candidat = $pdo->prepare("DELETE FROM candidats WHERE telephone = ?");
+    $stmt_candidat->execute([$phone_to_delete]);
 
     if ($stmt_candidat->rowCount() > 0) {
         $candidature_message = "Candidature associée également supprimée.";
     }
     // B. SUPPRIMER L'UTILISATEUR DANS LA TABLE 'utilisateurs'
-    $stmt_user = $pdo->prepare("DELETE FROM utilisateurs WHERE id_utilisateur = ?");
-    $stmt_user->execute([$id_to_delete]);
+    $stmt_user = $pdo->prepare("DELETE FROM utilisateurs WHERE telephone = ?");
+    $stmt_user->execute([$phone_to_delete]);
 
     // C. Vérifier le résultat et finaliser
     if ($stmt_user->rowCount() > 0) {
