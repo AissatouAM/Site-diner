@@ -138,8 +138,6 @@ main {
 h2 {
     color: rgb(218, 175, 32);
     font-family: 'Dancing Script', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
     margin-bottom: 30px;
     background: linear-gradient(45deg, #ffd903, #e5af4c, #7e741b, #aea33e);
     background-size: 300% 300%;
