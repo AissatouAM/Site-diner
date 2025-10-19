@@ -1,60 +1,46 @@
 <?php
-session_start();
-require_once('../../config/db_connect.php');
+    session_start();
+    require_once('../../config/db_connect.php');
 
-// Sécurité
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
-    header('Location: ../../connexion/index.php');
-    exit();
-}
-
-$candidat_id = null;
-$candidat_data = null;
-$error_messages = [];
-
-// --- Logique POST ---
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $candidat_id = $_POST['id_candidat'] ?? null;
-    $prenom = trim($_POST['prenom'] ?? '');
-    $nom = trim($_POST['nom'] ?? '');
-    $niveau = trim($_POST['niveau'] ?? '');
-
-    if (empty($prenom) || empty($nom) || empty($niveau)) {
-        $error_messages[] = "Tous les champs sont obligatoires.";
+    // 1. Sécurité : Vérification du rôle 'admin'
+    if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+        // Redirige si l'utilisateur n'est pas un admin
+        header('Location: ../../connexion/index.php');
+        exit();
     }
 
-    if (empty($error_messages)) {
-        try {
-            $stmt = $pdo->prepare("UPDATE candidats SET prenom = ?, nom = ?, niveau = ? WHERE id_candidat = ?");
-            $stmt->execute([$prenom, $nom, $niveau, $candidat_id]);
-            $_SESSION['candidate_message'] = "Le candidat a été mis à jour.";
-            header('Location: index.php');
-            exit();
-        } catch (PDOException $e) {
-            $error_messages[] = "Erreur de base de données: " . $e->getMessage();
-        }
-    }
-    $candidat_data = $_POST;
-
-} else {
-    // --- Logique GET ---
+    // 2. Récupération et validation de l'ID
     $candidat_id = $_GET['id'] ?? null;
+    $message = "";
+
+    // Vérifie si l'ID est présent et est un entier valide
     if (!$candidat_id || !filter_var($candidat_id, FILTER_VALIDATE_INT)) {
-        $_SESSION['candidate_message'] = "ID de candidat non valide.";
-        header('Location: index.php');
+        $_SESSION['candidate_message'] = "ID de candidat non valide pour la suppression.";
+        header('Location: index.php'); // Redirige vers la liste
         exit();
     }
 
-    $stmt = $pdo->prepare("SELECT * FROM candidats WHERE id_candidat = ?");
-    $stmt->execute([$candidat_id]);
-    $candidat_data = $stmt->fetch(PDO::FETCH_ASSOC);
+    // 3. Logique de Suppression
+    try {
+        // Prépare et exécute la requête de suppression
+        $stmt = $pdo->prepare("DELETE FROM candidats WHERE id_candidat = ?");
+        $stmt->execute([$candidat_id]);
 
-    if (!$candidat_data) {
-        $_SESSION['candidate_message'] = "Candidat non trouvé.";
-        header('Location: index.php');
-        exit();
+        // Vérifie si une ligne a été affectée (si le candidat existait)
+        if ($stmt->rowCount() > 0) {
+            $_SESSION['candidate_message'] = "Le candidat (ID: " . htmlspecialchars($candidat_id) . ") a été **supprimé** avec succès. ✅";
+        } else {
+            $_SESSION['candidate_message'] = "Erreur : Candidat (ID: " . htmlspecialchars($candidat_id) . ") non trouvé ou déjà supprimé. ⚠️";
+        }
+
+    } catch (PDOException $e) {
+        // Gestion des erreurs de base de données
+        $_SESSION['candidate_message'] = "Erreur de base de données lors de la suppression: " . $e->getMessage();
     }
-}
+
+    // 4. Redirection finale vers la liste des candidats
+    header('Location: index.php');
+    exit();
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="admin-container">
         <header class="admin-header">
-            <h1>Modifier le Candidat</h1>
+            <h1>Supprimer le Candidat</h1>
             <div>
                 <a href="index.php" class="back-link">Retour à la liste</a>
             </div>
@@ -88,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <?php endif; ?>
 
-            <form action="edit.php" method="POST">
+            <form action="delete.php" method="POST">
                 <input type="hidden" name="id_candidat" value="<?= htmlspecialchars($candidat_data['id_candidat']) ?>">
 
                 <div class="form-group">

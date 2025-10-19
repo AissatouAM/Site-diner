@@ -9,40 +9,68 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     exit();
 }
 
-// 1. Valider l'ID de l'utilisateur
-$id_to_delete = $_GET['id'] ?? null;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $_SESSION['user_message'] = "Erreur : Méthode de requête non autorisée.";
+    header('Location: index.php');
+    exit();
+}
 
-if (!$id_to_delete || !filter_var($id_to_delete, FILTER_VALIDATE_INT)) {
-    $_SESSION['user_message'] = "Erreur : ID d'utilisateur invalide.";
+// 1. Récupérer et Valider le numéro de téléphone via POST
+// Le nom du champ doit correspondre à celui dans le formulaire (ici 'telephone')
+$phone_to_delete = $_POST['telephone'] ?? null;
+
+// Nettoyage de la donnée
+$phone_to_delete = trim($phone_to_delete);
+
+//vérifier si le téléphone est vide après nettoyage
+if (empty($phone_to_delete)) {
+    $_SESSION['user_message'] = "Erreur : Le numéro de téléphone est manquant.";
     header('Location: index.php');
     exit();
 }
 
 // 2. Empêcher un admin de se supprimer lui-même
-if ($id_to_delete == $_SESSION['utilisateur_id']) {
+if ($phone_to_delete == $_SESSION['telephone']) {
     $_SESSION['user_message'] = "Erreur : Vous ne pouvez pas supprimer votre propre compte administrateur.";
     header('Location: index.php');
     exit();
 }
 
 // 3. Procéder à la suppression
-try {
-    $stmt = $pdo->prepare("DELETE FROM utilisateurs WHERE id_utilisateur = ?");
-    $stmt->execute([$id_to_delete]);
 
-    // Vérifier si la suppression a bien eu lieu
-    if ($stmt->rowCount() > 0) {
-        $_SESSION['user_message'] = "L'utilisateur a été supprimé avec succès.";
+$candidature_message = "";
+
+try {
+    // DÉBUT DE LA TRANSACTION (pour assurer que les deux suppressions se fassent ou qu'aucune ne se fasse)
+    $pdo->beginTransaction();
+
+    // A. SUPPRIMER LA CANDIDATURE CORRESPONDANTE DANS LA TABLE 'candidats'
+    $stmt_candidat = $pdo->prepare("DELETE FROM candidats WHERE telephone = ?");
+    $stmt_candidat->execute([$phone_to_delete]);
+
+    if ($stmt_candidat->rowCount() > 0) {
+        $candidature_message = "Candidature associée également supprimée.";
+    }
+    // B. SUPPRIMER L'UTILISATEUR DANS LA TABLE 'utilisateurs'
+    $stmt_user = $pdo->prepare("DELETE FROM utilisateurs WHERE telephone = ?");
+    $stmt_user->execute([$phone_to_delete]);
+
+    // C. Vérifier le résultat et finaliser
+    if ($stmt_user->rowCount() > 0) {
+        $pdo->commit(); // Validation des deux suppressions
+        $_SESSION['user_message'] = "L'utilisateur a été supprimé avec succès. " . $candidature_message;
     } else {
+        $pdo->rollBack(); // Annulation de tout si l'utilisateur n'existait pas
         $_SESSION['user_message'] = "Erreur : L'utilisateur n'a pas pu être trouvé ou a déjà été supprimé.";
     }
 
 } catch (PDOException $e) {
-    // Gérer les erreurs de base de données (par exemple, contraintes de clé étrangère)
-    $_SESSION['user_message'] = "Erreur de base de données : " . $e->getMessage();
+    $pdo->rollBack(); 
+    $_SESSION['user_message'] = "Erreur de base de données : Suppression annulée. " . $e->getMessage();
 }
 
 // 4. Rediriger vers la liste des utilisateurs
 header('Location: index.php');
 exit();
 ?>
+

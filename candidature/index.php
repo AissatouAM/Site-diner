@@ -65,6 +65,7 @@ $candidat_existant = $stmt_candidat->fetch(PDO::FETCH_ASSOC);
                 <p><strong>Niveau d'étude:</strong> <?php echo htmlspecialchars($candidat_existant['niveau']); ?></p>
                 
                 <button type="button" class="btn-modify" id="btn-edit">Modifier ma candidature</button>
+                <button type="button" class="btn-delete" id="btn-del">Supprimer ma candidature</button>
             </div>
 
             <!-- Formulaire de modification (caché par défaut) -->
@@ -97,7 +98,41 @@ $candidat_existant = $stmt_candidat->fetch(PDO::FETCH_ASSOC);
                 </form>
             </div>
 
+            
+
+    <?php if (isset($_SESSION['candidature_success'])): ?>
+            <div class="message success">
+                <?php echo htmlspecialchars($_SESSION['candidature_success']); ?>
+            </div>
+            <?php unset($_SESSION['candidature_success']); ?>
+        <?php elseif (isset($_SESSION['candidature_error'])): ?>
+            <div class="message error">
+                <?php echo htmlspecialchars($_SESSION['candidature_error']); ?>
+            </div>
+            <?php unset($_SESSION['candidature_error']); ?>
+        <?php endif; ?>
+                <form id="delete-form" action="delete.php" method="POST" style="display: none;">
+                    <input type="hidden" name="id_candidat" value="<?php echo $candidat_existant['id_candidat']; ?>">
+                </form>
+
         <?php else: ?>
+
+            <?php if (isset($_SESSION['candidature_success'])): ?>
+            <div class="message success">
+                <?php echo htmlspecialchars($_SESSION['candidature_success']); ?>
+            </div>
+            <?php unset($_SESSION['candidature_success']); ?>
+        <?php elseif (isset($_SESSION['candidature_error'])): ?>
+            <div class="message error">
+                <?php echo htmlspecialchars($_SESSION['candidature_error']); ?>
+            </div>
+            <?php unset($_SESSION['candidature_error']); ?>
+        <?php endif; ?>
+                <form id="delete-form" action="delete.php" method="POST" style="display: none;">
+                    <input type="hidden" name="id_candidat" value="<?php echo $candidat_existant['id_candidat']; ?>">
+                </form>
+
+
             <h1 id="h1">Tu veux être Roi ou Reine des codeurs ?</h1>
             <h2 id="h2">Dépose ta candidature!</h2>
 
@@ -158,6 +193,19 @@ $candidat_existant = $stmt_candidat->fetch(PDO::FETCH_ASSOC);
         btnCancel.addEventListener('click', () => {
             candidatEdit.style.display = 'none';
             candidatDisplay.style.display = 'block';
+        });
+    }
+
+    // Script pour la suppression de la candidature
+
+    const btnDelete = document.getElementById('btn-del');
+    const deleteForm = document.getElementById('delete-form');
+
+    if (btnDelete) {
+        btnDelete.addEventListener('click', () => {
+            if (confirm("ATTENTION: Êtes-vous sûr de vouloir supprimer définitivement votre candidature ? Cette action est irréversible.")) {
+                deleteForm.submit();
+            }
         });
     }
   </script>
