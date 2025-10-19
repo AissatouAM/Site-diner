@@ -136,9 +136,27 @@ main {
 }
 
 h2 {
-    color: #d4af37;
-    /* doré élégant */
-    font-size: 1.5rem;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.8);
-    font-weight: 500;
+    color: rgb(218, 175, 32);
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ffd903, #e5af4c, #7e741b, #aea33e);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
