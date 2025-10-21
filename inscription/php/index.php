@@ -104,20 +104,37 @@ echo <<<HTML
         p { color:  #e0d6a0; }
 
         a {
-            color: #ffa500; /* orange chaud */
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
+    color: #ffa500;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+}
 
-        a:hover {
-            color: #ffb733; /* orange doré clair */
-            text-shadow: 0 0 8px rgba(255, 165, 0, 0.6); /* effet lumineux doux */
-        }
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #ffb733, #ffa500, #cc8400);
+    transition: width 0.4s ease;
+}
 
-    a:visited {
-        color: #e0d6a0; /* orange foncé après visite */
-    }
+a:hover {
+    color: #ffb733;
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+a:visited {
+    color: #cc8400;
+}
+
     </style>
 </head>
 <body>
