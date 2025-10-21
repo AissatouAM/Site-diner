@@ -51,16 +51,17 @@ $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
 $_SESSION['inscription_reussie'] = true;
 
-echo '
+<?php
+echo <<<HTML
 <!DOCTYPE html>
-<html lang='fr'>
+<html lang="fr">
 <head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='refresh' content='3;url=../../connexion/index.php'>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3;url=../../connexion/index.php">
     <title>Inscription réussie</title>
     <style>
         body {
-            font-family:'Dancing Script', sans-serif;
+            font-family: 'Dancing Script', sans-serif;
             background-image: url("../../assets/images/background.jpg");
             display: flex;
             align-items: center;
@@ -90,36 +91,27 @@ echo '
             margin-bottom: 30px;
             background: linear-gradient(45deg, #ffd903, #e5af4c, #7e741b, #aea33e);
             background-size: 300% 300%;
-            background-clip: text;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 3s infinite linear;
         }
-
         @keyframes shine {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        p {
-            color: #333;
-        }
+        p { color: #333; }
     </style>
 </head>
 <body>
-    <div class='message-box'>
+    <div class="message-box">
         <h2>✅ Inscription réussie !</h2>
         <p>Vous allez être redirigé vers la page de connexion dans quelques secondes...</p>
-        <p><a href='../../connexion/index.php'>Cliquez ici si la redirection ne se fait pas.</a></p>
+        <p><a href="../../connexion/index.php">Cliquez ici si la redirection ne se fait pas.</a></p>
     </div>
 </body>
 </html>
-';
+HTML;
 exit();
 ?>
