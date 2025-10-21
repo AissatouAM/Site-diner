@@ -60,22 +60,52 @@ echo "
     <title>Inscription réussie</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family:'Dancing Script', sans-serif ;
+            background-image:url("../images/background.jpg") ;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            backdrop-filter: blur(2px);
+            flex-direction: column;
+            margin: 0;
+            padding: 20px;
         }
         .message-box {
-            background-color: white;
+            background: rgba(0, 0, 0, 0.4);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
             text-align: center;
         }
         h2 {
-            color: #28a745;
+            color: rgb(218, 175, 32);
+            font-family: 'Dancing Script', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ffd903, #e5af4c, #7e741b, #aea33e);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         p {
             color: #333;

@@ -15,7 +15,7 @@
             👑 ⚜ Coder's Dinner ⚜ 👑
         </div>
         <div data-target="2025-12-31T23:59:00" id="countdown" aria-live="polite">
-            <h2>Compte a rebours jusqu'au dinner</h2>
+            <h2>Compte a rebours jusqu'au diner</h2>
             <div class="grille" aria-hidden="false">
                 <div class="item">
                     <div class="time-value" id="days">0</div>
