@@ -81,6 +81,7 @@ echo <<<HTML
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0,0,0,0.6);
             text-align: center;
+            border: 2px solid rgba(218, 165, 32, 0.4);
         }
         h2 {
             color: rgb(218, 175, 32);
@@ -100,12 +101,28 @@ echo <<<HTML
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        p { color: #333; }
+        p { color:  #e0d6a0; }
+
+        a {
+            color: #ffa500; /* orange chaud */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffb733; /* orange doré clair */
+            text-shadow: 0 0 8px rgba(255, 165, 0, 0.6); /* effet lumineux doux */
+        }
+
+    a:visited {
+        color: #e0d6a0; /* orange foncé après visite */
+    }
     </style>
 </head>
 <body>
     <div class="message-box">
-        <h2>✅ Inscription réussie !</h2>
+        <h2>Inscription réussie !</h2>
         <p>Vous allez être redirigé vers la page de connexion dans quelques secondes...</p>
         <p><a href="../../connexion/index.php">Cliquez ici si la redirection ne se fait pas.</a></p>
     </div>
