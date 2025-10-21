@@ -51,7 +51,7 @@ $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
 $_SESSION['inscription_reussie'] = true;
 
-echo "
+echo '
 <!DOCTYPE html>
 <html lang='fr'>
 <head>
@@ -60,8 +60,8 @@ echo "
     <title>Inscription réussie</title>
     <style>
         body {
-            font-family:'Dancing Script', sans-serif ;
-            background-image:url("../../assets/images/background.jpg") ;
+            font-family:'Dancing Script', sans-serif;
+            background-image: url("../../assets/images/background.jpg");
             display: flex;
             align-items: center;
             justify-content: center;
@@ -120,6 +120,6 @@ echo "
     </div>
 </body>
 </html>
-";
+';
 exit();
 ?>
