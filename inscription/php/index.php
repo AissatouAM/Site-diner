@@ -51,7 +51,6 @@ $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
 $_SESSION['inscription_reussie'] = true;
 
-<?php
 echo <<<HTML
 <!DOCTYPE html>
 <html lang="fr">
