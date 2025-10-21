@@ -61,7 +61,7 @@ echo "
     <style>
         body {
             font-family:'Dancing Script', sans-serif ;
-            background-image:url("../images/background.jpg") ;
+            background-image:url("../../../images/background.jpg") ;
             display: flex;
             align-items: center;
             justify-content: center;
