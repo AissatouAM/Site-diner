@@ -5,12 +5,13 @@ require_once("../../config/db_connect.php");
 // Récupération des données du formulaire
 $prenom = trim($_POST['prenom']);
 $nom = trim($_POST['nom']);
+$email = trim($_POST['email']);
 $telephone = trim($_POST['telephone']);
 $password = $_POST['password'];
 $confirm = $_POST['confirm_password'];
 
 // 1. Vérifier que tous les champs sont remplis
-if (empty($prenom) || empty($nom) || empty($telephone) || empty($password) || empty($confirm)) {
+if (empty($prenom) || empty($nom) || empty($email) || empty($telephone) || empty($password) || empty($confirm)) {
     echo "Tous les champs sont obligatoires.";
     exit();
 }
@@ -29,7 +30,16 @@ if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
     exit();
 }
 
-// 4. Vérifier que le numéro n'existe pas déjà
+// 4. Vérifier si l'email est déjà utilisé
+$stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE email = ?");
+$stmt->execute([$email]);
+if ($stmt->fetch()) {
+    $_SESSION['erreur_email'] = "Cet email est déjà utilisé.";
+    header("Location: ../index.php");
+    exit();
+}
+
+// 5. Vérifier que le numéro n'existe pas déjà
 $stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE telephone = ?");
 $stmt->execute([$telephone]);
 if ($stmt->fetch()) {
@@ -38,14 +48,14 @@ if ($stmt->fetch()) {
     exit();
 }
 
-// 5. Hacher le mot de passe
+// 6. Hacher le mot de passe
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// 6. Insérer l'utilisateur dans la base
-$stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, telephone, mot_de_passe) VALUES (?, ?, ?, ?)");
-$stmt->execute([$prenom, $nom, $telephone, $hashedPassword]);
+// 7. Insérer l'utilisateur dans la base
+$stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, email, telephone, mot_de_passe) VALUES (?, ?, ?, ?, ?)");
+$stmt->execute([$prenom, $nom, $email, $telephone, $hashedPassword]);
 
-// 7. Démarrer la session
+// 8. Démarrer la session
 $_SESSION['utilisateur_id'] = $pdo->lastInsertId();
 $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
