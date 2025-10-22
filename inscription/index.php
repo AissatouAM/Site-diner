@@ -1,3 +1,13 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$pref_prenom = isset($_GET['prenom']) ? htmlspecialchars($_GET['prenom']) : '';
+$pref_nom = isset($_GET['nom']) ? htmlspecialchars($_GET['nom']) : '';
+$pref_telephone = isset($_GET['telephone']) ? htmlspecialchars($_GET['telephone']) : '';
+$pref_email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +31,7 @@
 
         .home-link {
             text-decoration: none;
-            color: #daa520; /* Couleur dorée */
+            color: #daa520;
             display: block;
             margin-bottom: 10px;
             transition: transform 0.3s ease;
@@ -37,53 +47,50 @@
     <div class="fond"></div>
     <div class="centre"></div>
     <div class="container">
+
         <a href="../accueil/index.php" class="home-link" title="Retour à l'accueil">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
             </svg>
         </a>
+
         <h2>Inscription</h2>
 
         <?php
-        session_start();
-        $confirm_error = isset($_GET['confirm_error']) && $_GET['confirm_error'] == 1;
-        $pref_prenom = isset($_GET['prenom']) ? htmlspecialchars($_GET['prenom']) : '';
-        $pref_nom = isset($_GET['nom']) ? htmlspecialchars($_GET['nom']) : '';
-        $pref_telephone = isset($_GET['telephone']) ? htmlspecialchars($_GET['telephone']) : '';
-
-        // Message si le numéro existe déjà
         if (isset($_SESSION['erreur_numero'])) {
             echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_numero'] . "</p>";
             unset($_SESSION['erreur_numero']);
         }
 
-        //Message si le format du numéro est invalide
         if (isset($_SESSION['erreur_numero_invalide'])) {
             echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_numero_invalide'] . "</p>";
             unset($_SESSION['erreur_numero_invalide']);
+        }
+
+        if (isset($_SESSION['erreur_email'])) {
+            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_email'] . "</p>";
+            unset($_SESSION['erreur_email']);
+        }
+
+        if (isset($_SESSION['erreur_mdp'])) {
+            echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_mdp'] . "</p>";
+            unset($_SESSION['erreur_mdp']);
         }
         ?>
 
         <form class="register-form" method="POST" action="./php/index.php">
             <input type="text" name="prenom" placeholder="Prénom" value="<?= $pref_prenom ?>" required />
             <input type="text" name="nom" placeholder="Nom" value="<?= $pref_nom ?>" required />
-            <input type="tel" name="telephone" pattern="[0-9]{9}" title="Veuillez entrer un numéro de téléphone valide (ex: 777777777)" 
-             placeholder="Numéro de téléphone" pattern="^(77|76|75|78|71|70)[0-9]{7}$" maxlength="9" value="<?= $pref_telephone ?>" required/>
-            <input type="password" name="password" placeholder="Mot de passe" required/>
+            <input type="email" name="email" placeholder="Adresse email" value="<?= $pref_email ?>" required />
+            <input type="tel" name="telephone" pattern="[0-9]{9}" title="Veuillez entrer un numéro valide (ex: 777777777)" 
+                placeholder="Numéro de téléphone" pattern="^(77|76|75|78|71|70)[0-9]{7}$" maxlength="9" value="<?= $pref_telephone ?>" required />
+            <input type="password" name="password" placeholder="Mot de passe" required />
             <input type="password" name="confirm_password" placeholder="Confirmer le mot de passe" required />
-            
-            <button type="submit" class="bouton">S'inscrire</button>
-             
-            <p class="message">Déjà inscrit? <a href="../connexion/index.php">Se connecter</a></p>
-        </form>
-        <?php
-            if (isset($_SESSION['erreur_mdp'])) {
-                echo "<p style='color: red; text-align:center;'>" . $_SESSION['erreur_mdp'] . "</p>";
-                unset($_SESSION['erreur_mdp']);
-            }
-        ?>
 
+            <button type="submit" class="bouton">S'inscrire</button>
+
+            <p class="message">Déjà inscrit ? <a href="../connexion/index.php">Se connecter</a></p>
+        </form>
     </div>
 </body>
-
 </html>

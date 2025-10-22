@@ -18,15 +18,21 @@ if (empty($prenom) || empty($nom) || empty($email) || empty($telephone) || empty
 
 // 2. Vérifier que les mots de passe correspondent
 if ($password !== $confirm) {
-   $_SESSION['erreur_mdp'] = "Les mots de passe ne correspondent pas." ;
-   header("Location: ../index.php");
+    $_SESSION['erreur_mdp'] = "Les mots de passe ne correspondent pas.";
+    header("Location: ../index.php?prenom=" . urlencode($prenom) .
+                          "&nom=" . urlencode($nom) .
+                          "&telephone=" . urlencode($telephone) .
+                          "&email=" . urlencode($email));
     exit();
 }
 
 // 3. Vérifier le format du numéro (9 chiffres)
 if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
     $_SESSION['erreur_numero_invalide'] = "Numéro invalide. Le numéro doit commencer par 77, 76, 75, 78, 71 ou 70 et contenir 9 chiffres.";
-    header("Location: ../index.php");
+    header("Location: ../index.php?prenom=" . urlencode($prenom) .
+                          "&nom=" . urlencode($nom) .
+                          "&telephone=" . urlencode($telephone) .
+                          "&email=" . urlencode($email));
     exit();
 }
 
@@ -44,7 +50,10 @@ $stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE telephone =
 $stmt->execute([$telephone]);
 if ($stmt->fetch()) {
     $_SESSION['erreur_numero'] = "Ce numéro est déjà utilisé.";
-    header("Location: ../index.php");
+    header("Location: ../index.php?prenom=" . urlencode($prenom) .
+                          "&nom=" . urlencode($nom) .
+                          "&telephone=" . urlencode($telephone) .
+                          "&email=" . urlencode($email));
     exit();
 }
 
@@ -56,6 +65,37 @@ $stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, email, telephone, 
 $stmt->execute([$prenom, $nom, $email, $telephone, $hashedPassword]);
 
 // 8. Démarrer la session
+
+// 5. Vérifier que l'email est valide
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['erreur_email'] = "L'adresse email est invalide.";
+    header("Location: ../index.php?prenom=" . urlencode($prenom) .
+                          "&nom=" . urlencode($nom) .
+                          "&telephone=" . urlencode($telephone) .
+                          "&email=" . urlencode($email));
+    exit();
+}
+
+// 6. Vérifier que l'email n'existe pas déjà
+$stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE email = ?");
+$stmt->execute([$email]);
+if ($stmt->fetch()) {
+    $_SESSION['erreur_email'] = "Cette adresse email est déjà utilisée.";
+    header("Location: ../index.php?prenom=" . urlencode($prenom) .
+                          "&nom=" . urlencode($nom) .
+                          "&telephone=" . urlencode($telephone) .
+                          "&email=" . urlencode($email));
+    exit();
+}
+
+// 7. Hacher le mot de passe
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+// 8. Insérer l'utilisateur dans la base
+$stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, email, telephone, mot_de_passe) VALUES (?, ?, ?, ?, ?)");
+$stmt->execute([$prenom, $nom, $email, $telephone, $hashedPassword]);
+
+// 9. Démarrer la session
 $_SESSION['utilisateur_id'] = $pdo->lastInsertId();
 $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
@@ -114,37 +154,36 @@ echo <<<HTML
         p { color:  #e0d6a0; }
 
         a {
-    color: #ffa500;
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    transition: all 0.3s ease;
-}
+            color: #ffa500;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(90deg, #ffb733, #ffa500, #cc8400);
-    transition: width 0.4s ease;
-}
+        a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #ffb733, #ffa500, #cc8400);
+            transition: width 0.4s ease;
+        }
 
-a:hover {
-    color: #ffb733;
-    text-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
-}
+        a:hover {
+            color: #ffb733;
+            text-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+        }
 
-a:hover::after {
-    width: 100%;
-}
+        a:hover::after {
+            width: 100%;
+        }
 
-a:visited {
-    color: #cc8400;
-}
-
+        a:visited {
+            color: #cc8400;
+        }
     </style>
 </head>
 <body>
