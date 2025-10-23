@@ -62,7 +62,7 @@
 
       <p class="message">Pas encore de compte? <a href="../inscription/index.php">S'inscrire</a></p>
 
-      <a href="#" onclick="afficherMessage(); return false;">Mot de passe oublié ?</a>
+      <a href="../reinitialisation/index.php" onclick="afficherMessage(); return false;">Mot de passe oublié ?</a>
       <div class="message" aria-live="polite"></div>
     </form>
   </div>
