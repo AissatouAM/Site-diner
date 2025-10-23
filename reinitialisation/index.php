@@ -18,7 +18,7 @@
             <br>
             <button type="submit" class="bouton">Envoyer le lien</button>
         </form>
-        <p class="message"><a href="../connexion/index.html">Retour à la connexion</a></p>
+        <p class="message"><a href="../connexion/index.php">Retour à la connexion</a></p>
     </div>
 </body>
 
