@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "
         <script>
             alert('✅ Un lien de réinitialisation a été envoyé à $email (simulation).');
-            window.location.href = '../connexion/index.php';
+            window.location.href = '../../connexion/index.php';
         </script>
         ";
     } else {
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../connexion/index.php");
+    header("Location: ../../connexion/index.php");
     exit;
 }
 ?>
