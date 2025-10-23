@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Redirection vers la page de formulaire
-    header("Location: ../reinitialisation.php");
+    header("Location: ../index.php");
     exit;
 } else {
     // Si on accède à ce fichier directement sans POST
-    header("Location: ../reinitialisation.php");
+    header("Location: ../index.php");
     exit;
 }
