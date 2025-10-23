@@ -9,6 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['message'] = "Veuillez entrer votre adresse email.";
         $_SESSION['type'] = "error";
     } else {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['message'] = "Adresse email invalide.";
+            $_SESSION['type'] = "error";
+            header("Location: ../index.php");
+            exit;
+        }
+
         // Vérification dans la base de données
         $sql = "SELECT * FROM utilisateurs WHERE email = :email";
         $stmt = $pdo->prepare($sql);
