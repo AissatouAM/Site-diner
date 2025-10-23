@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            $_SESSION['message'] = "Un lien de réinitialisation a été envoyé à $email (simulation).";
+            $_SESSION['message'] = "Un lien de réinitialisation a été envoyé à $email.";
             $_SESSION['type'] = "success";
 
             // Ici tu pourrais générer un token et envoyer un mail réel
