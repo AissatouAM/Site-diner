@@ -1,29 +1,36 @@
 <?php
 session_start();
-require_once("../../config/db_connect.php");
+require_once("../../config/db_connect.php"); // Connexion PDO $pdo
 
-$message = "";
-$type = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = trim($_POST["email"]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email']);
 
     if (empty($email)) {
-        $message = "Veuillez entrer votre adresse email.";
-        $type = "error";
+        $_SESSION['message'] = "Veuillez entrer votre adresse email.";
+        $_SESSION['type'] = "error";
     } else {
+        // Vérification dans la base de données
         $sql = "SELECT * FROM utilisateurs WHERE email = :email";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            $message = "Un lien de réinitialisation a été envoyé à $email (simulation).";
-            $type = "success";
+            $_SESSION['message'] = "✅ Un lien de réinitialisation a été envoyé à $email (simulation).";
+            $_SESSION['type'] = "success";
+
+            // Ici tu pourrais générer un token et envoyer un mail réel
         } else {
-            $message = "Aucun compte trouvé avec cet email.";
-            $type = "error";
+            $_SESSION['message'] = "❌ Aucun compte trouvé avec cet email.";
+            $_SESSION['type'] = "error";
         }
     }
+
+    // Redirection vers la page de formulaire
+    header("Location: ../reinitialisation.php");
+    exit;
+} else {
+    // Si on accède à ce fichier directement sans POST
+    header("Location: ../reinitialisation.php");
+    exit;
 }
-?>
