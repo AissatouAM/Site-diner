@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <h2>Mot de passe oublié 🔑</h2>
-        <form method="POST" class="register-form" action="envoiemail.php">
+        <form method="POST" class="register-form" action="php/index.php">
             <p>Entrez votre adresse email pour recevoir un lien de réinitialisation :</p>
             <input type="email" name="email" placeholder="Votre email" required>
             <br>
