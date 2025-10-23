@@ -1,7 +1,7 @@
 <?php
 // Démarrer la session
 session_start();
-require_once("../config/db_connect.php"); 
+require_once("../../config/db_connect.php"); 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"]);
