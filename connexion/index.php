@@ -62,22 +62,10 @@
 
       <p class="message">Pas encore de compte? <a href="../inscription/index.php">S'inscrire</a></p>
 
-      <a href="../reinitialisation/index.php" onclick="afficherMessage(); return false;">Mot de passe oublié ?</a>
+      <a href="../reinitialisation/index.php" >Mot de passe oublié ?</a>
       <div class="message" aria-live="polite"></div>
     </form>
   </div>
-
-  <script>
-    function afficherMessage() {
-      const zoneMessage = document.querySelector(".message");
-      zoneMessage.textContent = "Veuillez contacter l'administrateur du site pour plus d'aide.";
-      zoneMessage.style.color = "orange";
-
-      setTimeout(() => {
-        zoneMessage.textContent = "";
-      }, 5000);
-    }
-  </script>
 </body>
 
 </html>
