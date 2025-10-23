@@ -37,7 +37,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="POST" class="register-form" action="php/index.php">
+        <form method="POST" class="register-form" action="">
             <p>Entrez votre adresse email pour recevoir un lien de réinitialisation :</p>
             <input type="email" name="email" placeholder="Votre email" required>
             <br>
