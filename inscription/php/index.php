@@ -36,37 +36,7 @@ if (!preg_match("/^(77|76|75|78|71|70)[0-9]{7}$/", $telephone)) {
     exit();
 }
 
-// 4. Vérifier si l'email est déjà utilisé
-$stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE email = ?");
-$stmt->execute([$email]);
-if ($stmt->fetch()) {
-    $_SESSION['erreur_email'] = "Cet email est déjà utilisé.";
-    header("Location: ../index.php");
-    exit();
-}
-
-// 5. Vérifier que le numéro n'existe pas déjà
-$stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE telephone = ?");
-$stmt->execute([$telephone]);
-if ($stmt->fetch()) {
-    $_SESSION['erreur_numero'] = "Ce numéro est déjà utilisé.";
-    header("Location: ../index.php?prenom=" . urlencode($prenom) .
-                          "&nom=" . urlencode($nom) .
-                          "&telephone=" . urlencode($telephone) .
-                          "&email=" . urlencode($email));
-    exit();
-}
-
-// 6. Hacher le mot de passe
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-// 7. Insérer l'utilisateur dans la base
-$stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, email, telephone, mot_de_passe) VALUES (?, ?, ?, ?, ?)");
-$stmt->execute([$prenom, $nom, $email, $telephone, $hashedPassword]);
-
-// 8. Démarrer la session
-
-// 5. Vérifier que l'email est valide
+// 4. Vérifier que l'email est valide
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['erreur_email'] = "L'adresse email est invalide.";
     header("Location: ../index.php?prenom=" . urlencode($prenom) .
@@ -76,11 +46,23 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-// 6. Vérifier que l'email n'existe pas déjà
+// 5. Vérifier si l'email est déjà utilisé
 $stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE email = ?");
 $stmt->execute([$email]);
 if ($stmt->fetch()) {
     $_SESSION['erreur_email'] = "Cette adresse email est déjà utilisée.";
+    header("Location: ../index.php?prenom=" . urlencode($prenom) .
+                          "&nom=" . urlencode($nom) .
+                          "&telephone=" . urlencode($telephone) .
+                          "&email=" . urlencode($email));
+    exit();
+}
+
+// 6. Vérifier que le numéro n'existe pas déjà
+$stmt = $pdo->prepare("SELECT id_utilisateur FROM utilisateurs WHERE telephone = ?");
+$stmt->execute([$telephone]);
+if ($stmt->fetch()) {
+    $_SESSION['erreur_numero'] = "Ce numéro est déjà utilisé.";
     header("Location: ../index.php?prenom=" . urlencode($prenom) .
                           "&nom=" . urlencode($nom) .
                           "&telephone=" . urlencode($telephone) .
@@ -101,6 +83,7 @@ $_SESSION['prenom'] = $prenom;
 $_SESSION['nom'] = $nom;
 $_SESSION['inscription_reussie'] = true;
 
+// 10. Afficher message de succès
 echo <<<HTML
 <!DOCTYPE html>
 <html lang="fr">
