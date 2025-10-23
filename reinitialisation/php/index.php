@@ -12,8 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $_SESSION['message'] = "Adresse email invalide.";
             $_SESSION['type'] = "error";
-            header("Location: ../index.php");
-            exit;
         }
 
         // Vérification dans la base de données
