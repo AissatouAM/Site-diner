@@ -16,15 +16,6 @@ unset($_SESSION['message'], $_SESSION['type']);
 <title>Mot de passe oublié</title>
 <link rel="stylesheet" href="../assets/css/reinitialisation.css">
 <style>
-.message {
-     font-family: 'Dancing Script', sans-serif;
-    font-size: 1.2rem;
-    color: red ;
-    background: rgba(255, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid rgba(255, 0, 0, 0.3);
-}
 .message.success {
     background: rgba(0, 128, 0, 0.1) ;
     color: #155724;
