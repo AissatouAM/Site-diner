@@ -44,6 +44,16 @@ foreach ($candidats as $candidat) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        .no-candidate-message {
+            text-align: center;
+            font-size: 1.3em;
+            color: gold;
+            margin: 40px 0;
+            font-family: 'Dancing Script', cursive;
+        }
+    </style>
 </head>
 <body>
 
@@ -74,14 +84,19 @@ foreach ($candidats as $candidat) {
             <!-- Section pour les hommes -->
             <section class="category-section">
                 <h2 class="category-title">Choisissez votre Roi</h2>
+
+                <?php if (empty($hommes)): ?>
+                    <p class="no-candidate-message">Aucun candidat pour l’instant.</p>
+                <?php else: ?>
+
                 <?php if ($voted_for_male_id): ?>
                     <div class="voted-message">Vous avez déjà voté pour un Roi.</div>
                 <?php endif; ?>
+
                 <div class="carousel-container">
                     <button class="nav-button left" data-target="male-candidates-grid">&#10094;</button>
                     <div class="candidates-grid" id="male-candidates-grid">
                         <?php 
-                            // Dupliquer les 3 dernières cartes pour la boucle sans couture
                             $cloned_end_cards_male = array_slice($hommes, -3);
                             foreach ($cloned_end_cards_male as $h_cloned):
                                 $isDisabled = $voted_for_male_id !== null;
@@ -125,7 +140,6 @@ foreach ($candidats as $candidat) {
                         <?php endforeach; ?>
 
                         <?php 
-                            // Dupliquer les 3 premières cartes pour la boucle sans couture
                             $cloned_start_cards_male = array_slice($hommes, 0, 3);
                             foreach ($cloned_start_cards_male as $h_cloned): 
                                 $isDisabled = $voted_for_male_id !== null;
@@ -149,19 +163,26 @@ foreach ($candidats as $candidat) {
                     </div>
                     <button class="nav-button right" data-target="male-candidates-grid">&#10095;</button>
                 </div>
+
+                <?php endif; ?>
             </section>
 
             <!-- Section pour les femmes -->
             <section class="category-section">
                 <h2 class="category-title">Choisissez votre Reine</h2>
+
+                <?php if (empty($dames)): ?>
+                    <p class="no-candidate-message">Aucun candidat pour l’instant.</p>
+                <?php else: ?>
+
                 <?php if ($voted_for_female_id): ?>
                     <div class="voted-message">Vous avez déjà voté pour une Reine.</div>
                 <?php endif; ?>
+
                 <div class="carousel-container">
                     <button class="nav-button left" data-target="female-candidates-grid">&#10094;</button>
                     <div class="candidates-grid" id="female-candidates-grid">
                         <?php 
-                            // Dupliquer les 3 dernières cartes pour la boucle sans couture
                             $cloned_end_cards_female = array_slice($dames, -3);
                             foreach ($cloned_end_cards_female as $d_cloned):
                                 $isDisabled = $voted_for_female_id !== null;
@@ -205,7 +226,6 @@ foreach ($candidats as $candidat) {
                         <?php endforeach; ?>
 
                         <?php 
-                            // Dupliquer les 3 premières cartes pour la boucle sans couture
                             $cloned_start_cards_female = array_slice($dames, 0, 3);
                             foreach ($cloned_start_cards_female as $d_cloned): 
                                 $isDisabled = $voted_for_female_id !== null;
@@ -229,12 +249,13 @@ foreach ($candidats as $candidat) {
                     </div>
                     <button class="nav-button right" data-target="female-candidates-grid">&#10095;</button>
                 </div>
+
+                <?php endif; ?>
             </section>
         </div>
     </main>
 
     <script>
-        // Script pour le menu hamburger
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navLinks = document.getElementById('nav-links');
 
