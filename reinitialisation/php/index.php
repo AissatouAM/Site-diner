@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         // Génération du token sécurisé
         $token = bin2hex(random_bytes(32));
-        $expire = date('Y-m-d H:i:s', strtotime('+1 hour')); // token valable 1h
+        $expire = date('Y-m-d H:i:s', strtotime('+3 hours')); // token valable 3h
 
         // Stocker le token dans la base
         $sqlUpdate = "UPDATE utilisateurs SET reset_token = :token, token_expire = :expire WHERE email = :email";
