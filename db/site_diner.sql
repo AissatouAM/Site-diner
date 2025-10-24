@@ -16,6 +16,8 @@ CREATE TABLE `utilisateurs` (
     `email` VARCHAR(255) NOT NULL UNIQUE,
     `telephone` VARCHAR(30) NOT NULL UNIQUE, 
     `mot_de_passe` VARCHAR(255) NOT NULL, 
+    `reset_token` VARCHAR(64) NULL,
+    `token_expire` DATETIME NULL,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
  
@@ -56,9 +58,6 @@ ALTER TABLE `utilisateurs` ADD `role` ENUM('user', 'admin') NOT NULL DEFAULT 'us
 
 ALTER TABLE `candidats` ADD `status` ENUM('approved', 'pending', 'rejected') NOT NULL DEFAULT 'approved' AFTER `vote`;
 
-ALTER TABLE `utilisateurs`
-ADD COLUMN IF NOT EXISTS reset_token VARCHAR(64) NULL,
-ADD COLUMN IF NOT EXISTS token_expire DATETIME NULL;
 
 
  
