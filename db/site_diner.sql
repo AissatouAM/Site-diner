@@ -55,6 +55,11 @@ CREATE TABLE `votes` (
 ALTER TABLE `utilisateurs` ADD `role` ENUM('user', 'admin') NOT NULL DEFAULT 'user' AFTER `mot_de_passe`;
 
 ALTER TABLE `candidats` ADD `status` ENUM('approved', 'pending', 'rejected') NOT NULL DEFAULT 'approved' AFTER `vote`;
+
+ALTER TABLE utilisateurs
+ADD COLUMN reset_token VARCHAR(64) NULL,
+ADD COLUMN token_expire DATETIME NULL;
+
  
 -- Note: la colonne `vote` dans `candidat` est un champ de cache; il peut être mis à jour 
 -- via trigger ou recalculé par une requête d'agrégation : 
