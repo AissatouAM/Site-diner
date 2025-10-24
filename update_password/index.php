@@ -67,7 +67,7 @@ unset($_SESSION['type']);
             <script>
                 setTimeout(function() {
                     window.location.href = "../connexion/index.php";
-                }, 2000); // 5000 ms = 5 secondes
+                }, 2000); // 2000 ms = 2 secondes
             </script>
         <?php endif; ?>
     </div>
