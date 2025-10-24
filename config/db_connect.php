@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $host = "localhost";
 $username = "site-diner";
 $password = "mafe-4444"; // Mets ton mot de passe MySQL ici
