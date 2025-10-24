@@ -2,6 +2,13 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+$message = $_SESSION['erreur_mdp'] ?? $_SESSION['message'] ?? '';
+$type = isset($_SESSION['erreur_mdp']) ? 'error' : (isset($_SESSION['message']) ? 'success' : '');
+
+// On supprime les messages pour qu’ils ne s’affichent qu’une fois
+unset($_SESSION['erreur_mdp']);
+unset($_SESSION['message']);
+unset($_SESSION['type']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
