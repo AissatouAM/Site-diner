@@ -18,6 +18,7 @@ CREATE TABLE `utilisateurs` (
     `mot_de_passe` VARCHAR(255) NOT NULL, 
     `reset_token` VARCHAR(64) NULL,
     `token_expire` DATETIME NULL,
+    `role` ENUM('user', 'admin') NOT NULL DEFAULT 'user',
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
  
@@ -33,6 +34,7 @@ CREATE TABLE `candidats` (
     `genre_candidat` ENUM('masculin','feminin') NOT NULL, 
     -- champ de comptage (facultatif, peut être maintenu via trigger ou requête d'agrégation) 
     `vote` INT DEFAULT 0, 
+     `status` ENUM('approved', 'pending', 'rejected') NOT NULL DEFAULT 'approved',
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP, 
     INDEX (`genre_candidat`), 
     INDEX (`telephone`), 
@@ -54,9 +56,6 @@ CREATE TABLE `votes` (
     INDEX (`id_candidat`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
 
-ALTER TABLE `utilisateurs` ADD `role` ENUM('user', 'admin') NOT NULL DEFAULT 'user' AFTER `mot_de_passe`;
-
-ALTER TABLE `candidats` ADD `status` ENUM('approved', 'pending', 'rejected') NOT NULL DEFAULT 'approved' AFTER `vote`;
 
 
 
