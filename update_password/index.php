@@ -43,8 +43,8 @@ unset($_SESSION['type']);
     <div class="container">
         <h2>Réinitialiser votre mot de passe 🔐</h2>
 
-        <?php if(!empty($message)): ?>
-            <div class="message <?php echo $type; ?>">
+        <?php if (!empty($message)): ?>
+            <div class="message <?= htmlspecialchars($type) ?>">
                 <?= htmlspecialchars($message) ?>
             </div>
         <?php endif; ?>
