@@ -49,7 +49,7 @@ unset($_SESSION['type']);
             </div>
         <?php endif; ?>
         
-        <form class="register-form">
+        <form class="register-form" action="php/index.php" method="POST">
             <p>Veuillez entrer votre nouveau mot de passe :</p>
             <input type="password" placeholder="Nouveau mot de passe" required>
             <input type="password" placeholder="Confirmez le mot de passe" required>
