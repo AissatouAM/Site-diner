@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         // Créer le lien de réinitialisation
-       $link = "https://cybibff.site/update_password/index.php?email=" . urlencode($email) . "&token=" . $token;
+       $link = "https://dgi-site-diner.cybibff.site//update_password/index.php?email=" . urlencode($email) . "&token=" . $token;
 
         // 5️⃣ Envoi du mail avec PHPMailer
         $mail = new PHPMailer(true);
