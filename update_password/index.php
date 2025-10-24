@@ -51,8 +51,8 @@ unset($_SESSION['type']);
         
         <form class="register-form" action="php/index.php" method="POST">
             <p>Veuillez entrer votre nouveau mot de passe :</p>
-            <input type="password" placeholder="Nouveau mot de passe" required>
-            <input type="password" placeholder="Confirmez le mot de passe" required>
+            <input type="password" name="password" placeholder="Nouveau mot de passe" required>
+            <input type="password" name="confirm" placeholder="Confirmez le mot de passe" required>
             <br>
             <button type="submit" class="bouton">Valider</button>
         </form>
