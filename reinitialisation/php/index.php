@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         // Créer le lien de réinitialisation
-        $link = "http://localhost/SITE-DINER-1/reinitialisation/index.php?email=" . urlencode($email) . "&token=" . $token;
+        $link = "http://localhost/SITE-DINER-1/update_password/index.php?email=" . urlencode($email) . "&token=" . $token;
 
         // 5️⃣ Envoi du mail avec PHPMailer
         $mail = new PHPMailer(true);
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
 
-            $mail->setFrom('no-reply@tonsite.com', 'Ton Site');
+            $mail->setFrom('aissataba395@gmail.com', 'Coders Dinner');
             $mail->addAddress($email);
 
             $mail->isHTML(true);
