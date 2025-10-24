@@ -79,6 +79,13 @@ body {
     box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
 }
 
+.register-form input[type="text"]::placeholder,
+.register-form input[type="tel"]::placeholder,
+.register-form input[type="password"]::placeholder,
+.register-form input[type="email"]::placeholder {
+    color: #eee;
+}
+
 * {
     box-sizing: border-box;
 }
