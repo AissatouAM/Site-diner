@@ -23,12 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Vérifie que le token existe et n’a pas expiré
-    $sql = "SELECT * FROM utilisateurs WHERE reset_token = :token AND token_expire > NOW()";
+    $sql = "SELECT * FROM utilisateurs WHERE reset_token = :token";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['token' => $token]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user) {
+    if (!$user || strtotime($user['token_expire']) < time())  {
         $_SESSION['erreur_mdp'] = "Lien de réinitialisation invalide ou expiré.";
         header("Location: ../index.php?token=" . urlencode($token));
         exit;
