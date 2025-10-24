@@ -68,20 +68,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Réinitialisation de votre mot de passe';
+            $mail->Subject = 'Reinitialisation de votre mot de passe';
             $mail->Body    = "Bonjour,<br><br>Cliquez sur ce lien pour réinitialiser votre mot de passe : <a href='$link'>$link</a><br><br>Ce lien est valable 1 heure.";
 
             $mail->send();
-            $_SESSION['message'] = "✅ Un lien de réinitialisation a été envoyé à $email.";
+            $_SESSION['message'] = " Un lien de réinitialisation a été envoyé à $email.";
             $_SESSION['type'] = "success";
 
         } catch (Exception $e) {
-            $_SESSION['message'] = "❌ Le mail n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
+            $_SESSION['message'] = " Le mail n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
             $_SESSION['type'] = "error";
         }
 
     } else {
-        $_SESSION['message'] = "❌ Aucun compte trouvé avec cet email.";
+        $_SESSION['message'] = " Aucun compte trouvé avec cet email.";
         $_SESSION['type'] = "error";
     }
 
