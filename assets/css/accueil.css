@@ -68,8 +68,13 @@ main {
     box-shadow: 0 4px 15px rgba(218, 165, 32, 0.5);
 }
 
-.boutonup:hover,
 .buttonin:hover {
+    background: linear-gradient(135deg, #fff6a1 0%, #ffd700 100%);
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(218, 165, 32, 0.8);
+}
+
+.buttonup:hover {
     background: linear-gradient(135deg, #fff6a1 0%, #ffd700 100%);
     transform: scale(1.08);
     box-shadow: 0 6px 20px rgba(218, 165, 32, 0.8);
