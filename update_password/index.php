@@ -53,6 +53,8 @@ unset($_SESSION['type']);
             <p>Veuillez entrer votre nouveau mot de passe :</p>
             <input type="password" name="password" placeholder="Nouveau mot de passe" required>
             <input type="password" name="confirm" placeholder="Confirmez le mot de passe" required>
+            <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+            <input type="hidden" name="email" value="<?= htmlspecialchars($email) ?>">
             <br>
             <button type="submit" class="bouton">Valider</button>
         </form>

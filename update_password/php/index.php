@@ -7,6 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $token = $_POST['token'] ?? '';
     $password = $_POST['password'] ?? '';
     $confirm = $_POST['confirm'] ?? '';
+    $email = $_POST['email'] ?? '';
+
 
     // Vérifie que tous les champs sont remplis
     if (empty($password) || empty($confirm)) {
@@ -23,9 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Vérifie que le token existe et n’a pas expiré
-    $sql = "SELECT * FROM utilisateurs WHERE reset_token = :token";
+    $sql = "SELECT * FROM utilisateurs WHERE reset_token = :token AND email = :email";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['token' => $token]);
+    $stmt->execute([
+        'token' => $token,
+        'email' => $email
+    ]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$user || strtotime($user['token_expire']) < time())  {
