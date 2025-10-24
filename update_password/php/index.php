@@ -11,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérifie que tous les champs sont remplis
     if (empty($password) || empty($confirm)) {
         $_SESSION['erreur_mdp'] = "Veuillez remplir tous les champs.";
-        header("Location: ../update_password.php?token=" . urlencode($token));
+        header("Location: ../index.php?token=" . urlencode($token));
         exit;
     }
 
     // Vérifie que les deux mots de passe correspondent
     if ($password !== $confirm) {
         $_SESSION['erreur_mdp'] = "Les mots de passe ne correspondent pas.";
-        header("Location: ../update_password.php?token=" . urlencode($token));
+        header("Location: ../index.php?token=" . urlencode($token));
         exit;
     }
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$user) {
         $_SESSION['erreur_mdp'] = "Lien de réinitialisation invalide ou expiré.";
-        header("Location: ../update_password.php?token=" . urlencode($token));
+        header("Location: ../index.php?token=" . urlencode($token));
         exit;
     }
 
@@ -45,13 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'id' => $user['id_utilisateur']
     ]);
 
-    $_SESSION['message'] = "✅ Votre mot de passe a été réinitialisé avec succès.";
+    $_SESSION['message'] = "Votre mot de passe a été réinitialisé avec succès.";
     $_SESSION['type'] = "success";
     header("Location: ../../connexion/index.php");
     exit;
 
 } else {
-    header("Location: ../update_password.php");
+    header("Location: ../index.php");
     exit;
 }
 ?>
