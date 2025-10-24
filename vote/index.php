@@ -172,7 +172,7 @@ foreach ($candidats as $candidat) {
                 <h2 class="category-title">Choisissez votre Reine</h2>
 
                 <?php if (empty($dames)): ?>
-                    <p class="no-candidate-message">Aucun candidat pour l’instant.</p>
+                    <p class="no-candidate-message">Aucune candidate pour l’instant.</p>
                 <?php else: ?>
 
                 <?php if ($voted_for_female_id): ?>
