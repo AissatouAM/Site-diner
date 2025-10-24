@@ -69,6 +69,7 @@ body {
     font-family: 'Dancing Script', sans-serif;
     font-size: 1.2rem;
     transition: all 0.3s ease;
+    color: white;
 }
 
 .register-form input[type="text"]:focus,
