@@ -56,7 +56,7 @@ ALTER TABLE `utilisateurs` ADD `role` ENUM('user', 'admin') NOT NULL DEFAULT 'us
 
 ALTER TABLE `candidats` ADD `status` ENUM('approved', 'pending', 'rejected') NOT NULL DEFAULT 'approved' AFTER `vote`;
 
-ALTER TABLE utilisateurs
+ALTER TABLE `utilisateurs`
 ADD COLUMN IF NOT EXISTS reset_token VARCHAR(64) NULL,
 ADD COLUMN IF NOT EXISTS token_expire DATETIME NULL;
 
