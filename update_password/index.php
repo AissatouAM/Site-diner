@@ -2,6 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,6 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <div class="container">
         <h2>Réinitialiser votre mot de passe 🔐</h2>
+        
         <form class="register-form">
             <p>Veuillez entrer votre nouveau mot de passe :</p>
             <input type="password" placeholder="Nouveau mot de passe" required>
