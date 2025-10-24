@@ -54,7 +54,7 @@ main {
 
 .buttonup,
 .buttonin {
-    width: 70%;
+    width: 40%;
     padding: 15px;
     font-family: 'Dancing Script', sans-serif;
     font-size: 1.4rem;
@@ -68,7 +68,7 @@ main {
     box-shadow: 0 4px 15px rgba(218, 165, 32, 0.5);
 }
 
-.boutonup,
+.boutonup:hover,
 .buttonup:hover {
     background: linear-gradient(135deg, #fff6a1 0%, #ffd700 100%);
     transform: scale(1.08);
