@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $_SESSION['message'] = "Votre mot de passe a été réinitialisé avec succès.";
     $_SESSION['type'] = "success";
-    header("Location: ../../connexion/index.php");
+    header("Location: ../index.php?success=1 ");
     exit;
 
 } else {

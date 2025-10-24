@@ -61,6 +61,16 @@ unset($_SESSION['type']);
         </form>
 
         <p class="message"><a href="../connexion/index.php">Retour à la connexion</a></p>
+
+        <!-- Redirection automatique si succès -->
+        <?php if (!empty($message) && $type === 'success'): ?>
+            <p class="redirect-note">Vous allez être redirigé vers la page de connexion dans 5 secondes...</p>
+            <script>
+                setTimeout(function() {
+                    window.location.href = "../connexion/index.php";
+                }, 5000); // 5000 ms = 5 secondes
+            </script>
+        <?php endif; ?>
     </div>
 
 </body>
