@@ -13,7 +13,7 @@ CREATE TABLE `utilisateurs` (
     `id_utilisateur` INT AUTO_INCREMENT PRIMARY KEY, 
     `nom` VARCHAR(100) NOT NULL,
     `prenom` VARCHAR(100) NOT NULL,
-    `email` VARCHAR(255) NULL UNIQUE,
+    `email` VARCHAR(255) NOT NULL UNIQUE,
     `telephone` VARCHAR(30) NOT NULL UNIQUE, 
     `mot_de_passe` VARCHAR(255) NOT NULL, 
     `reset_token` VARCHAR(64) NULL,
@@ -59,7 +59,7 @@ CREATE TABLE `votes` (
 
 
 
- 
--- Note: la colonne `vote` dans `candidat` est un champ de cache; il peut être mis à jour 
--- via trigger ou recalculé par une requête d'agrégation : 
--- SELECT id_candidat, COUNT(*) FROM votes GROUP BY id_candidat;
+    
+    -- Note: la colonne `vote` dans `candidat` est un champ de cache; il peut être mis à jour 
+    -- via trigger ou recalculé par une requête d'agrégation : 
+    -- SELECT id_candidat, COUNT(*) FROM votes GROUP BY id_candidat;

@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="container">
                         <h2>✅ Administrateur créé avec succès !</h2>
                         <p>Vous pouvez maintenant vous connecter via la page de connexion normale.</p>
-                        <a href="connexion/html/index.php">Aller à la page de connexion</a>
+                        <a href="connexion/index.php">Aller à la page de connexion</a>
                     </div>
                 </body>
                 </html>
