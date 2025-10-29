@@ -36,8 +36,8 @@ try {
 <body>
 
 <div class="top-right">
-    <a href="login.php"><button>Connexion</button></a>
-    <a href="dashboard.php"><button>Tableau de bord</button></a>
+    <a href="../connexion/index.php"><button>Connexion</button></a>
+    <a href="../tableaudebord/index.php"><button>Tableau de bord</button></a>
 </div>
 <br><br>
 <h1 id="perr"> 👑CODERS'DINNER👑 </h1>
